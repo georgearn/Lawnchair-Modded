@@ -2,11 +2,16 @@ name: Build release APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 14-dev
 
 jobs:
   build-release-apk:
     runs-on: ubuntu-latest
     continue-on-error: true
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,4 +40,10 @@ jobs:
         with:
           name: Release APK
           path: build/outputs/*
-          
+      - name: Publish rolling release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest build
+          make_latest: true
+          files: build/outputs/apk/lawnWithQuickstep/release/*.apk
