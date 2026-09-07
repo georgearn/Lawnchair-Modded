@@ -1,14 +1,6 @@
 # <p align="center"> Lawnchair 14 Modded
 
 
-&nbsp;
-
-<p align="center">
-          <img src="https://m3-markdown-badges.vercel.app/stars/9/2/Unofficial-Life/Lawnchair-Modded">
-
-<p align="center"> <b> <i> Lawnchair Balance between Simplicity and Customization </b> </i>
-
-&nbsp;
 
 It is a free, open-source home app for Android. Taking Launcher3 — Android’s default home app — as a starting point, it ports Pixel Launcher features and introduces rich options for customization.
 
