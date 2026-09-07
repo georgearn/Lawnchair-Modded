@@ -27,6 +27,8 @@ It is a free, open-source home app for Android. Taking Launcher3 — Android’s
 -   No debug and fairly stable build forked from [Goooler's fork](https://github.com/Goooler/LawnchairRelease)
 - Using Goooler's [Signing key](keystore.properties)
 - New monet/Material you theming available in actions tab under branch experiment
+- Fixed At a Glance date format (now shows e.g. `Mon, 7 Sep`)
+- New **Hide clock on home screen** option (Settings → Home screen → Status bar) — clock stays hidden only on the home screen, shows everywhere else
 
 ## Features
 
@@ -44,14 +46,6 @@ It is a free, open-source home app for Android. Taking Launcher3 — Android’s
 <br>
 
 > **Magisk/Ksu Module** →  **[Here](https://github.com/Unofficial-Life/Lawnchair-Launcher-Module)** (Q to U QPR3) Automatically replace stock launcher and recents provider to lawnchair without any extra steps
-
-## Why this fork ?
-
-I have been in love with this awesome launcher since I found it. Then I found a modded version of the lawnchair made by Amr Gamal on his channel.I fell in love with those new icons and recent,<s>but unfortunately, he stopped making the fork and deleted all existing ones</s> (He started again just on the day i completed this repo but i will still keep this repo). I wanted new updates with these amazing icons. It took too much time to edit the app with tools such as MT Manager and Apktoolm, and doing it correctly required careful attention to the files. My decision was to fork Lawnchair and incorporate his modifications into the repository, making it build with it. So now we are here .... 
-
-<br>
-
-> _**Enjoy this amazing and lovely build ❤**_
 
 ## Quick links
 
