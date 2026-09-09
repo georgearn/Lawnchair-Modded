@@ -2417,12 +2417,27 @@ public class DeviceProfile {
             return this;
         }
 
+        /**
+         * Retroid Pocket Classic panel (1240x1080) is a squarish, landscape-oriented
+         * handheld screen. Left untreated it gets classified as a phone in landscape,
+         * which pushes the hotseat/all-apps drawer to the side (vertical bar layout)
+         * instead of the bottom. Detect it by resolution and opt it out of that mode.
+         */
+        private static boolean isRetroidPocketClassicScreen(WindowBounds windowBounds) {
+            int w = windowBounds.bounds.width();
+            int h = windowBounds.bounds.height();
+            int longSide = Math.max(w, h);
+            int shortSide = Math.min(w, h);
+            return longSide == 1240 && shortSide == 1080;
+        }
+
         public DeviceProfile build() {
             if (mWindowBounds == null) {
                 throw new IllegalArgumentException("Window bounds not set");
             }
             if (mTransposeLayoutWithOrientation == null) {
-                mTransposeLayoutWithOrientation = !mInfo.isTablet(mWindowBounds);
+                mTransposeLayoutWithOrientation = !mInfo.isTablet(mWindowBounds)
+                        && !isRetroidPocketClassicScreen(mWindowBounds);
             }
             if (mIsGestureMode == null) {
                 mIsGestureMode = mInfo.navigationMode.hasGestures;
