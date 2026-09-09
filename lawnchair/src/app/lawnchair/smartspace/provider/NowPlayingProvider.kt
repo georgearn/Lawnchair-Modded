@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.drawable.Icon
 import app.lawnchair.BlankActivity
 import app.lawnchair.getAppName
+import app.lawnchair.smartspace.model.NowPlayingActions
 import app.lawnchair.smartspace.model.SmartspaceAction
 import app.lawnchair.smartspace.model.SmartspaceScores
 import app.lawnchair.smartspace.model.SmartspaceTarget
@@ -53,10 +54,16 @@ class NowPlayingProvider(context: Context) : SmartspaceDataSource(
                 title = title,
                 subtitle = subtitle,
                 pendingIntent = intent,
-                onClick = if (intent == null) Runnable { media.toggle(true) } else null,
+                onClick = if (intent == null) Runnable { media.playPause() } else null,
             ),
             score = SmartspaceScores.SCORE_MEDIA,
             featureType = SmartspaceTarget.FeatureType.FEATURE_MEDIA,
+            nowPlayingActions = NowPlayingActions(
+                isPlaying = media.isPlaying,
+                onPlayPause = { media.playPause() },
+                onNext = { media.skipToNext() },
+                onPrevious = { media.skipToPrevious() },
+            ),
         )
     }
 

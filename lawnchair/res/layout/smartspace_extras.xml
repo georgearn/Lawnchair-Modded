@@ -26,4 +26,45 @@
         android:layout_gravity="center_vertical"
         android:scaleType="centerInside"
         android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/media_controls_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/media_previous"
+            android:layout_width="@dimen/enhanced_smartspace_media_button_size"
+            android:layout_height="@dimen/enhanced_smartspace_media_button_size"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_media_previous"
+            android:contentDescription="@string/media_previous" />
+
+        <ImageButton
+            android:id="@+id/media_play_pause"
+            android:layout_width="@dimen/enhanced_smartspace_media_button_size"
+            android:layout_height="@dimen/enhanced_smartspace_media_button_size"
+            android:layout_marginStart="4dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_media_pause"
+            android:contentDescription="@string/media_play_pause" />
+
+        <ImageButton
+            android:id="@+id/media_next"
+            android:layout_width="@dimen/enhanced_smartspace_media_button_size"
+            android:layout_height="@dimen/enhanced_smartspace_media_button_size"
+            android:layout_marginStart="4dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_media_next"
+            android:contentDescription="@string/media_next" />
+    </LinearLayout>
 </merge>

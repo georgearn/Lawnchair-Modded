@@ -1,16 +1,19 @@
 package app.lawnchair.smartspace
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.text.layoutDirection
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import app.lawnchair.smartspace.model.NowPlayingActions
 import app.lawnchair.smartspace.model.SmartspaceAction
 import app.lawnchair.smartspace.model.SmartspaceTarget
 import app.lawnchair.smartspace.model.hasIntent
@@ -31,6 +34,10 @@ class BcSmartspaceCard @JvmOverloads constructor(
     private var iconTintColor = 0
     private var nextAlarmImageView: ImageView? = null
     private var nextAlarmTextView: TextView? = null
+    private var mediaControlsGroup: ViewGroup? = null
+    private var mediaPreviousButton: ImageButton? = null
+    private var mediaPlayPauseButton: ImageButton? = null
+    private var mediaNextButton: ImageButton? = null
     private var subtitleTextView: TextView? = null
     private lateinit var target: SmartspaceTarget
     private var titleTextView: TextView? = null
@@ -49,6 +56,10 @@ class BcSmartspaceCard @JvmOverloads constructor(
             dndImageView = it.findViewById(R.id.dnd_icon)
             nextAlarmImageView = it.findViewById(R.id.alarm_icon)
             nextAlarmTextView = it.findViewById(R.id.alarm_text)
+            mediaControlsGroup = it.findViewById(R.id.media_controls_group)
+            mediaPreviousButton = it.findViewById(R.id.media_previous)
+            mediaPlayPauseButton = it.findViewById(R.id.media_play_pause)
+            mediaNextButton = it.findViewById(R.id.media_next)
         }
     }
 
@@ -97,6 +108,8 @@ class BcSmartspaceCard @JvmOverloads constructor(
             }
         }
 
+        setNowPlayingActions(target.nowPlayingActions)
+
         dateView?.let {
             val calendarAction = SmartspaceAction(
                 id = headerAction?.id ?: baseAction?.id ?: UUID.randomUUID().toString(),
@@ -126,6 +139,24 @@ class BcSmartspaceCard @JvmOverloads constructor(
         baseActionIconSubtitleView?.setTextColor(textColor)
         iconTintColor = textColor
         updateIconTint()
+        mediaPreviousButton?.imageTintList = ColorStateList.valueOf(textColor)
+        mediaPlayPauseButton?.imageTintList = ColorStateList.valueOf(textColor)
+        mediaNextButton?.imageTintList = ColorStateList.valueOf(textColor)
+    }
+
+    private fun setNowPlayingActions(actions: NowPlayingActions?) {
+        if (actions == null) {
+            mediaControlsGroup?.isVisible = false
+            return
+        }
+        extrasGroup?.isVisible = true
+        mediaControlsGroup?.isVisible = true
+        mediaPlayPauseButton?.setImageResource(
+            if (actions.isPlaying) R.drawable.ic_media_pause else R.drawable.ic_media_play,
+        )
+        mediaPreviousButton?.setOnClickListener { actions.onPrevious() }
+        mediaPlayPauseButton?.setOnClickListener { actions.onPlayPause() }
+        mediaNextButton?.setOnClickListener { actions.onNext() }
     }
 
     fun setTitle(title: CharSequence?, contentDescription: CharSequence?, hasIcon: Boolean) {
