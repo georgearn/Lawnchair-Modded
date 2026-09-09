@@ -1,0 +1,25 @@
+name: Retroid Temp Build
+
+on:
+  push:
+    branches:
+      - claude/retroid-pocket-classic-launcher-2rgbze
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew assembleLawnWithQuickstepRelease
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Retroid APK
+          path: |
+            build/outputs/apk/lawnWithQuickstep/release/*.apk
