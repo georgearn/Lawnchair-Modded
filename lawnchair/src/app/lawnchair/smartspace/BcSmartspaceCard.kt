@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.graphics.ColorUtils
 import androidx.core.text.layoutDirection
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -142,6 +143,8 @@ class BcSmartspaceCard @JvmOverloads constructor(
         mediaPreviousButton?.imageTintList = ColorStateList.valueOf(textColor)
         mediaPlayPauseButton?.imageTintList = ColorStateList.valueOf(textColor)
         mediaNextButton?.imageTintList = ColorStateList.valueOf(textColor)
+        mediaPlayPauseButton?.backgroundTintList =
+            ColorStateList.valueOf(ColorUtils.setAlphaComponent(textColor, 40))
     }
 
     private fun setNowPlayingActions(actions: NowPlayingActions?) {
