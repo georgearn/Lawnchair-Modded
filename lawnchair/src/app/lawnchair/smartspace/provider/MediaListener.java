@@ -64,6 +64,22 @@ public class MediaListener extends MediaController.Callback {
         return mTracking;
     }
 
+    public boolean isPlaying() {
+        return mTracking != null && mTracking.isPlaying();
+    }
+
+    public void playPause() {
+        pressButton(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+    }
+
+    public void skipToNext() {
+        pressButton(KeyEvent.KEYCODE_MEDIA_NEXT);
+    }
+
+    public void skipToPrevious() {
+        pressButton(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+    }
+
     public String getPackage() {
         return mTracking.controller.getPackageName();
     }
@@ -207,7 +223,7 @@ public class MediaListener extends MediaController.Callback {
             return info != null && info.title != null;
         }
 
-        private boolean isPlaying() {
+        public boolean isPlaying() {
             if (!hasTitle()) return false;
             PlaybackState playbackState = controller.getPlaybackState();
             if (playbackState == null) return false;
