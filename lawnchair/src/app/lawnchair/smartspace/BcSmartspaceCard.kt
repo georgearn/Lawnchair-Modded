@@ -56,11 +56,11 @@ class BcSmartspaceCard @JvmOverloads constructor(
             dndImageView = it.findViewById(R.id.dnd_icon)
             nextAlarmImageView = it.findViewById(R.id.alarm_icon)
             nextAlarmTextView = it.findViewById(R.id.alarm_text)
-            mediaControlsGroup = it.findViewById(R.id.media_controls_group)
-            mediaPreviousButton = it.findViewById(R.id.media_previous)
-            mediaPlayPauseButton = it.findViewById(R.id.media_play_pause)
-            mediaNextButton = it.findViewById(R.id.media_next)
         }
+        mediaControlsGroup = findViewById(R.id.media_controls_group)
+        mediaPreviousButton = findViewById(R.id.media_previous)
+        mediaPlayPauseButton = findViewById(R.id.media_play_pause)
+        mediaNextButton = findViewById(R.id.media_next)
     }
 
     fun setSmartspaceTarget(target: SmartspaceTarget, multipleCards: Boolean) {
@@ -149,7 +149,6 @@ class BcSmartspaceCard @JvmOverloads constructor(
             mediaControlsGroup?.isVisible = false
             return
         }
-        extrasGroup?.isVisible = true
         mediaControlsGroup?.isVisible = true
         mediaPlayPauseButton?.setImageResource(
             if (actions.isPlaying) R.drawable.ic_media_pause else R.drawable.ic_media_play,
