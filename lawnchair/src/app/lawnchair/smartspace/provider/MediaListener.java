@@ -101,17 +101,18 @@ public class MediaListener extends MediaController.Callback {
             mTracking.reloadInfo();
         }
 
-        // If the current controller is not playing, stop tracking it.
+        // Stop tracking only once the notification/session is actually gone,
+        // so a paused track keeps showing instead of disappearing.
         if (mTracking != null
-                && (!mControllers.contains(mTracking) || !mTracking.isPlaying())) {
+                && (!mControllers.contains(mTracking) || !mTracking.hasInfo())) {
             mTracking = null;
         }
 
         for (MediaNotificationController mnc : mControllers) {
+            if (!mnc.hasInfo()) continue;
             // Either we are not tracking a controller and this one is valid,
             // or this one is playing while the one we track is not.
-            if ((mTracking == null && mnc.isPlaying())
-                    || (mTracking != null && mnc.isPlaying() && !mTracking.isPlaying())) {
+            if (mTracking == null || (mnc.isPlaying() && !mTracking.isPlaying())) {
                 mTracking = mnc;
             }
         }
@@ -219,12 +220,12 @@ public class MediaListener extends MediaController.Callback {
             reloadInfo();
         }
 
-        private boolean hasTitle() {
+        public boolean hasInfo() {
             return info != null && info.title != null;
         }
 
         public boolean isPlaying() {
-            if (!hasTitle()) return false;
+            if (!hasInfo()) return false;
             PlaybackState playbackState = controller.getPlaybackState();
             if (playbackState == null) return false;
             return playbackState.getState() == PlaybackState.STATE_PLAYING;
