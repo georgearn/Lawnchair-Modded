@@ -77,7 +77,7 @@ fun HomeScreenGridPreferences(
                 label = stringResource(id = R.string.rows),
                 adapter = rows.asPreferenceAdapter(),
                 step = 1,
-                valueRange = 3..maxGridSize,
+                valueRange = 3..3,
             )
         }
 
