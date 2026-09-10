@@ -38,6 +38,7 @@ import androidx.annotation.WorkerThread;
 import com.android.launcher3.BaseActivity;
 import com.android.launcher3.LauncherPrefs;
 import com.android.launcher3.util.DisplayController;
+import com.android.launcher3.util.WindowBounds;
 
 /**
  * Utility class to manage launcher rotation
@@ -69,6 +70,7 @@ public class RotationHelper implements OnSharedPreferenceChangeListener,
     private boolean mIgnoreAutoRotateSettings;
     private boolean mForceAllowRotationForTesting;
     private boolean mHomeRotationEnabled;
+    private boolean mIsFixedOrientationScreen;
 
     /**
      * Rotation request made by
@@ -123,10 +125,31 @@ public class RotationHelper implements OnSharedPreferenceChangeListener,
     @Override
     public void onDisplayInfoChanged(Context context, DisplayController.Info info, int flags) {
         boolean ignoreAutoRotateSettings = info.isTablet(info.realBounds);
+        boolean isFixedOrientationScreen = isRetroidPocketClassicScreen(info.realBounds);
+        boolean changed = isFixedOrientationScreen != mIsFixedOrientationScreen;
+        mIsFixedOrientationScreen = isFixedOrientationScreen;
         if (mIgnoreAutoRotateSettings != ignoreAutoRotateSettings) {
             setIgnoreAutoRotateSettings(ignoreAutoRotateSettings, info);
+            changed = true;
+        }
+        if (changed) {
             notifyChange();
         }
+    }
+
+    /**
+     * Retroid Pocket Classic panel (1240x1080) is a physically fixed-orientation
+     * handheld screen; it never actually rotates. Left untreated, its large
+     * smallest-width gets it classified as tablet-like (free rotation), which makes
+     * Home claim to support rotation and the system shows a spurious rotate-suggestion
+     * icon whenever the accelerometer reports the tiniest tilt.
+     */
+    private static boolean isRetroidPocketClassicScreen(WindowBounds windowBounds) {
+        int w = windowBounds.bounds.width();
+        int h = windowBounds.bounds.height();
+        int longSide = Math.max(w, h);
+        int shortSide = Math.min(w, h);
+        return longSide == 1240 && shortSide == 1080;
     }
 
     public void setStateHandlerRequest(int request) {
@@ -161,6 +184,7 @@ public class RotationHelper implements OnSharedPreferenceChangeListener,
             mInitialized = true;
             DisplayController displayController = DisplayController.INSTANCE.get(mActivity);
             DisplayController.Info info = displayController.getInfo();
+            mIsFixedOrientationScreen = isRetroidPocketClassicScreen(info.realBounds);
             setIgnoreAutoRotateSettings(info.isTablet(info.realBounds), info);
             displayController.addChangeListener(this);
             notifyChange();
@@ -190,6 +214,8 @@ public class RotationHelper implements OnSharedPreferenceChangeListener,
                     SCREEN_ORIENTATION_LOCKED : SCREEN_ORIENTATION_UNSPECIFIED;
         } else if (mCurrentStateRequest == REQUEST_LOCK) {
             activityFlags = SCREEN_ORIENTATION_LOCKED;
+        } else if (mIsFixedOrientationScreen) {
+            activityFlags = SCREEN_ORIENTATION_NOSENSOR;
         } else if (mIgnoreAutoRotateSettings || mCurrentStateRequest == REQUEST_ROTATE
                 || mHomeRotationEnabled || mForceAllowRotationForTesting) {
             activityFlags = SCREEN_ORIENTATION_UNSPECIFIED;
