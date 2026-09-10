@@ -1338,16 +1338,10 @@ public class DeviceProfile {
     private void updateAllAppsIconSize(float scale, Resources res) {
         allAppsBorderSpacePx = new Point(
                 pxFromDp(inv.allAppsBorderSpaces[mTypeIndex].x, mMetrics, scale),
-                // Scale the vertical gutter with the row-height factor too. It's added
-                // directly into allAppsCellHeightPx below and into the cellContentHeight
-                // floor further down, so without this the slider could only ever shrink
-                // the cell down to (icon + text + untouched gutter) and never actually
-                // tighten the visible gap between rows.
-                Math.round(pxFromDp(inv.allAppsBorderSpaces[mTypeIndex].y, mMetrics, scale)
-                        * allAppsCellHeightMultiplier));
+                pxFromDp(inv.allAppsBorderSpaces[mTypeIndex].y, mMetrics, scale));
         // AllApps cells don't have real space between cells,
         // so we add the border space to the cell height
-        allAppsCellHeightPx = pxFromDp(inv.allAppsCellSize[mTypeIndex].y, mMetrics, allAppsCellHeightMultiplier)
+        allAppsCellHeightPx = pxFromDp(inv.allAppsCellSize[mTypeIndex].y, mMetrics, scale)
                 + allAppsBorderSpacePx.y;
         // but width is just the cell,
         // the border is added in #updateAllAppsContainerWidth
@@ -1379,11 +1373,7 @@ public class DeviceProfile {
 
             int cellContentHeight = allAppsIconSizePx
                     + Utilities.calculateTextHeight(allAppsIconTextSizePx) + allAppsBorderSpacePx.y;
-            // Only apply the "fit content" floor when the user hasn't deliberately
-            // asked for a tighter row height. Otherwise this floor is what content
-            // sizing (icon + text) already sits right at by default, silently
-            // swallowing any attempt to shrink the row-height slider below 100%.
-            if (allAppsCellHeightMultiplier >= 1f && allAppsCellHeightPx < cellContentHeight) {
+            if (allAppsCellHeightPx < cellContentHeight) {
                 // Increase allAppsCellHeight to fit its content.
                 allAppsCellHeightPx = cellContentHeight;
             }
@@ -1397,6 +1387,12 @@ public class DeviceProfile {
             allAppsIconTextSizePx *= mTextFactors.getAllAppsIconTextSizeFactor();
             allAppsCellWidthPx = allAppsIconSizePx + (2 * allAppsIconDrawablePaddingPx);
         }
+
+        // Apply the user's row-height preference last, unconditionally, on top of
+        // whatever the branch above computed (including its own content-fit floor).
+        // This guarantees the slider always has a visible, predictable effect
+        // instead of being silently absorbed by an internal minimum.
+        allAppsCellHeightPx = Math.round(allAppsCellHeightPx * allAppsCellHeightMultiplier);
     }
 
     private void updateAllAppsWithResponsiveMeasures() {
