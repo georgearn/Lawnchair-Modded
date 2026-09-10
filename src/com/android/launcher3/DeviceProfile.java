@@ -1338,7 +1338,13 @@ public class DeviceProfile {
     private void updateAllAppsIconSize(float scale, Resources res) {
         allAppsBorderSpacePx = new Point(
                 pxFromDp(inv.allAppsBorderSpaces[mTypeIndex].x, mMetrics, scale),
-                pxFromDp(inv.allAppsBorderSpaces[mTypeIndex].y, mMetrics, scale));
+                // Scale the vertical gutter with the row-height factor too. It's added
+                // directly into allAppsCellHeightPx below and into the cellContentHeight
+                // floor further down, so without this the slider could only ever shrink
+                // the cell down to (icon + text + untouched gutter) and never actually
+                // tighten the visible gap between rows.
+                Math.round(pxFromDp(inv.allAppsBorderSpaces[mTypeIndex].y, mMetrics, scale)
+                        * allAppsCellHeightMultiplier));
         // AllApps cells don't have real space between cells,
         // so we add the border space to the cell height
         allAppsCellHeightPx = pxFromDp(inv.allAppsCellSize[mTypeIndex].y, mMetrics, allAppsCellHeightMultiplier)
