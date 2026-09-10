@@ -23,6 +23,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,6 +67,9 @@ public abstract class BaseAllAppsAdapter<T extends Context & ActivityContext> ex
     public static final int VIEW_TYPE_MASK_ICON = VIEW_TYPE_ICON;
 
     protected final SearchAdapterProvider<?> mAdapterProvider;
+
+    // TEMP DEBUG: remove once row-height slider behavior is confirmed.
+    private static boolean sShownCellHeightDebugToast = false;
 
     /**
      * ViewHolder for each icon.
@@ -193,6 +197,13 @@ public abstract class BaseAllAppsAdapter<T extends Context & ActivityContext> ex
                 // Ensure the all apps icon height matches the workspace icons in portrait mode.
                 icon.getLayoutParams().height =
                         mActivityContext.getDeviceProfile().allAppsCellHeightPx;
+                // TEMP DEBUG: remove once row-height slider behavior is confirmed.
+                if (!sShownCellHeightDebugToast) {
+                    sShownCellHeightDebugToast = true;
+                    Toast.makeText(parent.getContext(),
+                            "DEBUG allAppsCellHeightPx=" + icon.getLayoutParams().height + "px",
+                            Toast.LENGTH_LONG).show();
+                }
                 if (FeatureFlags.twoLineAllApps(parent.getContext())) {
                     icon.getLayoutParams().height += mExtraTextHeight;
                 }
