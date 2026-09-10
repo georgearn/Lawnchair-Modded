@@ -33,11 +33,11 @@ class SmartspaceViewContainer @JvmOverloads constructor(
         smartspaceView.previewMode = previewMode
         val ctx = LawnchairLauncher.instance?.launcherNullable
         val dp = ctx?.deviceProfile
-        // Icons are centered within their (wider) cell, so their glyph's left edge
-        // sits (cellWidthPx - iconSizePx) / 2 in from the cell's own left edge.
-        // Match that inset instead of the generic widget host padding, so the
-        // card's content lines up with the app icons in the rows below it.
-        val leftPadding = dp?.let { (it.cellWidthPx - it.iconSizePx) / 2 }
+        // cellLayoutPaddingPx.left is where the grid's first column starts (relative
+        // to this view's own bounds); (cellWidthPx - iconSizePx) / 2 is where an
+        // icon's glyph sits centered within that first cell. Both are needed to
+        // match the card's content to where app icon glyphs actually render.
+        val leftPadding = dp?.let { it.cellLayoutPaddingPx.left + (it.cellWidthPx - it.iconSizePx) / 2 }
         smartspaceView.setPadding(leftPadding ?: (left + 16), top, right, bottom)
         setOnLongClickListener {
             openOptions()

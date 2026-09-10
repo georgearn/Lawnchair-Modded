@@ -1379,7 +1379,11 @@ public class DeviceProfile {
 
             int cellContentHeight = allAppsIconSizePx
                     + Utilities.calculateTextHeight(allAppsIconTextSizePx) + allAppsBorderSpacePx.y;
-            if (allAppsCellHeightPx < cellContentHeight) {
+            // Only apply the "fit content" floor when the user hasn't deliberately
+            // asked for a tighter row height. Otherwise this floor is what content
+            // sizing (icon + text) already sits right at by default, silently
+            // swallowing any attempt to shrink the row-height slider below 100%.
+            if (allAppsCellHeightMultiplier >= 1f && allAppsCellHeightPx < cellContentHeight) {
                 // Increase allAppsCellHeight to fit its content.
                 allAppsCellHeightPx = cellContentHeight;
             }
