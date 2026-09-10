@@ -1396,7 +1396,10 @@ public class DeviceProfile {
                 mResponsiveAllAppsCellSpec.getIconDrawablePadding());
         allAppsBorderSpacePx = new Point(
                 mResponsiveAllAppsWidthSpec.getGutterPx(),
-                mResponsiveAllAppsHeightSpec.getGutterPx()
+                // Scale the vertical gutter with the row-height factor too, so the
+                // slider actually tightens the visible gap between rows instead of
+                // only resizing the icon/label cell inside a fixed-size gap.
+                Math.round(mResponsiveAllAppsHeightSpec.getGutterPx() * allAppsCellHeightMultiplier)
         );
         allAppsCellHeightPx = Math.round(
                 mResponsiveAllAppsHeightSpec.getCellSizePx() * allAppsCellHeightMultiplier);
