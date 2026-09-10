@@ -33,11 +33,11 @@ class SmartspaceViewContainer @JvmOverloads constructor(
         smartspaceView.previewMode = previewMode
         val ctx = LawnchairLauncher.instance?.launcherNullable
         val dp = ctx?.deviceProfile
-        // cellLayoutPaddingPx.left is where the grid's first column starts (relative
-        // to this view's own bounds); (cellWidthPx - iconSizePx) / 2 is where an
-        // icon's glyph sits centered within that first cell. Both are needed to
-        // match the card's content to where app icon glyphs actually render.
-        val leftPadding = dp?.let { it.cellLayoutPaddingPx.left + (it.cellWidthPx - it.iconSizePx) / 2 }
+        // This container is itself a CellLayout child at column 0, so its own
+        // position already accounts for the workspace margin and cell-layout
+        // padding (Workspace applies both to the page before this view is ever
+        // placed). Only the icon's own within-cell centering inset is missing.
+        val leftPadding = dp?.let { (it.cellWidthPx - it.iconSizePx) / 2 }
         smartspaceView.setPadding(leftPadding ?: (left + 16), top, right, bottom)
         setOnLongClickListener {
             openOptions()
