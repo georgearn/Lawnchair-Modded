@@ -696,6 +696,22 @@ public class InvariantDeviceProfile {
                 return (float) Math.hypot(x1 - x0, y1 - y0);
         }
 
+        /**
+         * Retroid Pocket Classic panel (1240x1080) is landscape but not tablet-sized.
+         * Without this, grid-option selection assumes a transposed portrait-style grid
+         * (matching the default non-tablet-landscape behavior), which conflicts with
+         * this device being forced into a non-transposed, bottom-anchored layout
+         * elsewhere (see DeviceProfile.Builder), picking a tall/narrow grid instead
+         * of one sized for its actual landscape shape.
+         */
+        private static boolean isRetroidPocketClassicScreen(WindowBounds windowBounds) {
+                int w = windowBounds.bounds.width();
+                int h = windowBounds.bounds.height();
+                int longSide = Math.max(w, h);
+                int shortSide = Math.min(w, h);
+                return longSide == 1240 && shortSide == 1080;
+        }
+
         private static DisplayOption invDistWeightedInterpolate(
                 Info displayInfo, ArrayList<DisplayOption> points, @DeviceType int deviceType) {
                 int minWidthPx = Integer.MAX_VALUE;
@@ -707,7 +723,8 @@ public class InvariantDeviceProfile {
                                 minWidthPx = Math.min(minWidthPx, bounds.availableSize.x / 2);
                                 minHeightPx = Math.min(minHeightPx, bounds.availableSize.y);
 
-                        } else if (!isTablet && bounds.isLandscape()) {
+                        } else if (!isTablet && bounds.isLandscape()
+                                        && !isRetroidPocketClassicScreen(bounds)) {
                                 // We will use transposed layout in this case
                                 minWidthPx = Math.min(minWidthPx, bounds.availableSize.y);
                                 minHeightPx = Math.min(minHeightPx, bounds.availableSize.x);
