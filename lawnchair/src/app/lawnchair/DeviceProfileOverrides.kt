@@ -91,7 +91,11 @@ class DeviceProfileOverrides(context: Context) {
             numFolderColumns = prefs2.folderColumns.firstBlocking(gridOption = defaultGrid),
 
             iconSizeFactor = prefs2.homeIconSizeFactor.firstBlocking(),
-            allAppsIconSizeFactor = prefs2.drawerIconSizeFactor.firstBlocking(),
+            allAppsIconSizeFactor = if (prefs2.drawerUseCustomIconSize.firstBlocking()) {
+                prefs2.drawerIconSizeFactor.firstBlocking()
+            } else {
+                prefs2.homeIconSizeFactor.firstBlocking()
+            },
 
             enableTaskbarOnPhone = prefs2.enableTaskbarOnPhone.firstBlocking(),
         )

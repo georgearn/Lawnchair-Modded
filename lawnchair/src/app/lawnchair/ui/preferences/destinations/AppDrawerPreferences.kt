@@ -107,13 +107,21 @@ fun AppDrawerPreferences(
             )
         }
         PreferenceGroup(heading = stringResource(id = R.string.icons)) {
-            SliderPreference(
-                label = stringResource(id = R.string.icon_sizes),
-                adapter = prefs2.drawerIconSizeFactor.getAdapter(),
-                step = 0.1f,
-                valueRange = 0.5F..1.5F,
-                showAsPercentage = true,
+            val useCustomIconSize = prefs2.drawerUseCustomIconSize.getAdapter()
+            SwitchPreference(
+                adapter = useCustomIconSize,
+                label = stringResource(id = R.string.app_drawer_use_custom_icon_size_label),
+                description = stringResource(id = R.string.app_drawer_use_custom_icon_size_description),
             )
+            ExpandAndShrink(visible = useCustomIconSize.state.value) {
+                SliderPreference(
+                    label = stringResource(id = R.string.icon_sizes),
+                    adapter = prefs2.drawerIconSizeFactor.getAdapter(),
+                    step = 0.1f,
+                    valueRange = 0.5F..1.5F,
+                    showAsPercentage = true,
+                )
+            }
             val showDrawerLabels = prefs2.showIconLabelsInDrawer.getAdapter()
             SwitchPreference(
                 adapter = showDrawerLabels,
