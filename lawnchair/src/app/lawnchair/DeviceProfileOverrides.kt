@@ -86,12 +86,20 @@ class DeviceProfileOverrides(context: Context) {
             prefs2: PreferenceManager2,
             defaultGrid: InvariantDeviceProfile.GridOption,
         ) : this(
-            numAllAppsColumns = prefs2.drawerColumns.firstBlocking(gridOption = defaultGrid),
+            numAllAppsColumns = if (prefs2.drawerUseCustomColumns.firstBlocking()) {
+                prefs2.drawerColumns.firstBlocking(gridOption = defaultGrid)
+            } else {
+                prefs.workspaceColumns.get()
+            },
             numFolderRows = prefs.folderRows.get(defaultGrid),
             numFolderColumns = prefs2.folderColumns.firstBlocking(gridOption = defaultGrid),
 
             iconSizeFactor = prefs2.homeIconSizeFactor.firstBlocking(),
-            allAppsIconSizeFactor = prefs2.drawerIconSizeFactor.firstBlocking(),
+            allAppsIconSizeFactor = if (prefs2.drawerUseCustomIconSize.firstBlocking()) {
+                prefs2.drawerIconSizeFactor.firstBlocking()
+            } else {
+                prefs2.homeIconSizeFactor.firstBlocking()
+            },
 
             enableTaskbarOnPhone = prefs2.enableTaskbarOnPhone.firstBlocking(),
         )

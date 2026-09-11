@@ -175,6 +175,10 @@
     <string name="icon_style_label">Icon style</string>
     <string name="icon_shape_label">Icon shape</string>
     <string name="icon_sizes">Icon size</string>
+    <string name="app_drawer_use_custom_icon_size_label">Use different icon size</string>
+    <string name="app_drawer_use_custom_icon_size_description">By default the app drawer uses the same icon size as the home screen</string>
+    <string name="app_drawer_use_custom_columns_label">Use different column count</string>
+    <string name="app_drawer_use_custom_columns_description">By default the app drawer uses the same column count as the home screen</string>
 
     <string name="show_labels">Show labels</string>
     <string name="label_size">Label size</string>

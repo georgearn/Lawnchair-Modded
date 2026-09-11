@@ -370,6 +370,13 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         onSet = { reloadHelper.reloadIcons() },
     )
 
+    /** When false, the app drawer icon size follows homeIconSizeFactor instead of drawerIconSizeFactor. */
+    val drawerUseCustomIconSize = preference(
+        key = booleanPreferencesKey(name = "drawer_use_custom_icon_size"),
+        defaultValue = false,
+        onSet = { reloadHelper.reloadIcons() },
+    )
+
     val showIconLabelsInDrawer = preference(
         key = booleanPreferencesKey(name = "show_icon_labels_in_drawer"),
         defaultValue = context.resources.getBoolean(R.bool.config_default_show_icon_labels_in_drawer),
@@ -503,6 +510,13 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
     val drawerColumns = idpPreference(
         key = intPreferencesKey(name = "drawer_columns"),
         defaultSelector = { numAllAppsColumns },
+        onSet = { reloadHelper.reloadGrid() },
+    )
+
+    /** When false, the app drawer column count follows the home screen's column count instead of drawerColumns. */
+    val drawerUseCustomColumns = preference(
+        key = booleanPreferencesKey(name = "drawer_use_custom_columns"),
+        defaultValue = false,
         onSet = { reloadHelper.reloadGrid() },
     )
 
