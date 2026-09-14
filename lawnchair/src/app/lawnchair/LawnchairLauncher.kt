@@ -39,7 +39,6 @@ import app.lawnchair.preferences.PreferenceManager
 import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.root.RootHelperManager
 import app.lawnchair.root.RootNotAvailableException
-import app.lawnchair.statusbar.ClockOverlay
 import app.lawnchair.theme.ThemeProvider
 import app.lawnchair.ui.popup.LawnchairShortcut
 import app.lawnchair.util.getThemedIconPacksInstalled
@@ -87,7 +86,6 @@ class LawnchairLauncher : QuickstepLauncher() {
     private val preferenceManager2 by unsafeLazy { PreferenceManager2.getInstance(this) }
     private val insetsController by unsafeLazy { WindowInsetsControllerCompat(launcher.window, rootView) }
     private val themeProvider by unsafeLazy { ThemeProvider.INSTANCE.get(this) }
-    private val clockOverlay by unsafeLazy { ClockOverlay(this) }
     private val noStatusBarStateListener = object : StateManager.StateListener<LauncherState> {
         override fun onStateTransitionStart(toState: LauncherState) {
             if (toState is OverviewState) {
@@ -391,10 +389,6 @@ class LawnchairLauncher : QuickstepLauncher() {
                 }
             }
         }
-
-        // Covers the clock's screen rect regardless of whether icon_blacklist actually
-        // took hold, papering over the shade-toggle GONE/INVISIBLE glitch in SystemUI.
-        if (hidden) clockOverlay.show(window.statusBarColor) else clockOverlay.hide()
     }
 
     override fun onDestroy() {
