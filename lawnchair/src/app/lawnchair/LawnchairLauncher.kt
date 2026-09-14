@@ -39,6 +39,7 @@ import app.lawnchair.preferences.PreferenceManager
 import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.root.RootHelperManager
 import app.lawnchair.root.RootNotAvailableException
+import app.lawnchair.statusbar.ClockOverlay
 import app.lawnchair.theme.ThemeProvider
 import app.lawnchair.ui.popup.LawnchairShortcut
 import app.lawnchair.util.getThemedIconPacksInstalled
@@ -71,8 +72,10 @@ import com.android.systemui.shared.system.QuickStepContract
 import com.kieronquinn.app.smartspacer.sdk.client.SmartspacerClient
 import com.patrykmichalik.opto.core.firstBlocking
 import com.patrykmichalik.opto.core.onEach
+import com.topjohnwu.superuser.Shell
 import dev.kdrag0n.monet.theme.ColorScheme
 import java.util.stream.Stream
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -84,6 +87,7 @@ class LawnchairLauncher : QuickstepLauncher() {
     private val preferenceManager2 by unsafeLazy { PreferenceManager2.getInstance(this) }
     private val insetsController by unsafeLazy { WindowInsetsControllerCompat(launcher.window, rootView) }
     private val themeProvider by unsafeLazy { ThemeProvider.INSTANCE.get(this) }
+    private val clockOverlay by unsafeLazy { ClockOverlay(this) }
     private val noStatusBarStateListener = object : StateManager.StateListener<LauncherState> {
         override fun onStateTransitionStart(toState: LauncherState) {
             if (toState is OverviewState) {
@@ -373,7 +377,24 @@ class LawnchairLauncher : QuickstepLauncher() {
         val current = Settings.Secure.getString(contentResolver, key).orEmpty()
         val tokens = current.split(',').filter { it.isNotBlank() && it != "clock" }
         val updated = if (hidden) tokens + "clock" else tokens
-        Settings.Secure.putString(contentResolver, key, updated.joinToString(","))
+        val value = updated.joinToString(",")
+
+        val wroteDirectly = runCatching {
+            Settings.Secure.putString(contentResolver, key, value)
+        }.getOrDefault(false)
+
+        if (!wroteDirectly) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val rootManager = RootHelperManager.INSTANCE.get(this@LawnchairLauncher)
+                if (rootManager.isAvailable()) {
+                    Shell.cmd("settings put secure $key \"$value\"").exec()
+                }
+            }
+        }
+
+        // Covers the clock's screen rect regardless of whether icon_blacklist actually
+        // took hold, papering over the shade-toggle GONE/INVISIBLE glitch in SystemUI.
+        if (hidden) clockOverlay.show(window.statusBarColor) else clockOverlay.hide()
     }
 
     override fun onDestroy() {
