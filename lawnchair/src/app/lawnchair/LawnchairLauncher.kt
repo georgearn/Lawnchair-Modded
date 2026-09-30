@@ -118,6 +118,7 @@ class LawnchairLauncher : QuickstepLauncher() {
     }
     private lateinit var colorScheme: ColorScheme
     private var hasBackGesture = false
+    private var hideClockOnHomeScreen = false
 
     val gestureController by unsafeLazy { GestureController(this) }
 
@@ -158,6 +159,7 @@ class LawnchairLauncher : QuickstepLauncher() {
         }.launchIn(scope = lifecycleScope)
 
         preferenceManager2.hideClockOnHomeScreen.get().distinctUntilChanged().onEach {
+            hideClockOnHomeScreen = it
             with(launcher.stateManager) {
                 if (it) {
                     addStateListener(hideClockStateListener)
@@ -340,7 +342,7 @@ class LawnchairLauncher : QuickstepLauncher() {
         super.onResume()
         restartIfPending()
 
-        if (preferenceManager2.hideClockOnHomeScreen.firstBlocking() && isInState(LauncherState.NORMAL)) {
+        if (hideClockOnHomeScreen && isInState(LauncherState.NORMAL)) {
             setStatusBarClockHidden(true)
         }
 
@@ -362,7 +364,7 @@ class LawnchairLauncher : QuickstepLauncher() {
     }
 
     override fun onPause() {
-        if (preferenceManager2.hideClockOnHomeScreen.firstBlocking()) {
+        if (hideClockOnHomeScreen) {
             setStatusBarClockHidden(false)
         }
         super.onPause()
@@ -372,8 +374,13 @@ class LawnchairLauncher : QuickstepLauncher() {
         val key = "icon_blacklist"
         val current = Settings.Secure.getString(contentResolver, key).orEmpty()
         val tokens = current.split(',').filter { it.isNotBlank() && it != "clock" }
-        val updated = if (hidden) tokens + "clock" else tokens
-        Settings.Secure.putString(contentResolver, key, updated.joinToString(","))
+        val updated = (if (hidden) tokens + "clock" else tokens).joinToString(",")
+        if (updated == current) return
+        try {
+            Settings.Secure.putString(contentResolver, key, updated)
+        } catch (e: SecurityException) {
+            // WRITE_SECURE_SETTINGS is only granted when installed as a system app.
+        }
     }
 
     override fun onDestroy() {
