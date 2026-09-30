@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Förhandsgranska</string>
     <string name="action_create">Skapa</string>
-    <string name="action_backup">Säkerhetskopiera</string>
     <string name="action_restore">Återställ</string>
     <string name="action_delete">Radera</string>
     <string name="action_reset">Återställ</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Urklipp</string>
     <string name="action_copy_link">Kopiera länk</string>
     <string name="action_copy">Kopiera</string>
-    <string name="action_paste">Klistra in</string>
     <string name="loading">Laddar …</string>
     <string name="managed_by_lawnchair">Hanteras av Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dynamisk</string>
     <string name="presets">Förval</string>
     <string name="custom">Anpassad</string>
-    <string name="feed_default">Förvald</string>
     <string name="system">System</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Kolumner</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Laddar</string>
-    <string name="smartspace_battery_full">Laddat</string>
     <string name="smartspace_battery_low">Lågt batteri</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — fullt om %2$s"</string>
     <string name="smartspace_widget">Snabböversikt</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Sök</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Sida %1$d av %2$d</string>
     <string name="smartspace_widget_placeholder_date">fre 3 mar.</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Nyheter</string>
     <string name="support">Support</string>
     <string name="product">Produkt</string>
-    <string name="design_and_development">Design &amp; utveckling</string>
     <string name="development">Utveckling</string>
     <string name="quickswitch_maintenance">QuickSwitch-underhåll</string>
     <string name="devops">DevOps</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">Sök efter fler appar</string>
     <string name="all_apps_search_on_web_message">Sök på <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Ingen appbutik eller webbläsare installerad</string>
-    <string name="clear_history">Rensa sökhistorik</string>
     <string name="search_input_action_clear_results">Rensa sökruta</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Sök</string>
     <string name="show_app_search_bar">Visa sökfält</string>
     <string name="pref_search_auto_show_keyboard">Visa tangentbord automatiskt</string>
     <string name="fuzzy_search_title">Oskarp sökning</string>
     <string name="fuzzy_search_desc">Ungefärlig matchning för appsökningar</string>
     <string name="suggestion_pref_screen_title">Förslag</string>
     <string name="show_suggested_apps_at_drawer_top">Visa föreslagna appar högst upp i applådan</string>
-    <string name="perform_wide_search_title">Enhetssökning</string>
-    <string name="perform_wide_search_description">Sök bland din telefons kontakter, filer och inställningar</string>
     <string name="show_hidden_apps_in_search_results">Visa dolda appar i sökresultat</string>
     <string name="hidden_apps_show_name_typed">Om hela namnet skrivs</string>
     <string name="app_search_algorithm">Sökalgoritm</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">För att söka bland dina filer, bevilja lagringsbehörigheter till Lawnchair</string>
     <string name="grant_requested_permissions">Bevilja behörigheter</string>
     <string name="allapps_web_suggestion_provider_label">Webbförslagsleverantör</string>
-    <string name="allapps_use_web_suggestion_icon_label">Visa webbförslagsleverantörens ikon i sökfältet</string>
     <string name="allapps_match_qsb_style_label">Matcha åtgärder i favoritfältets sökfält</string>
     <string name="allapps_match_qsb_style_description">Att klicka på favoritfältets sökfält kommer nu att öppna applådans sökgränssnitt</string>
 </resources>

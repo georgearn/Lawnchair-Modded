@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Predogled</string>
     <string name="action_create">Ustvari</string>
-    <string name="action_backup">Backup</string>
     <string name="action_restore">Obnovi</string>
     <string name="action_delete">Izbriši</string>
     <string name="action_reset">Ponastavi</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Clipboard</string>
     <string name="action_copy_link">Copy link</string>
     <string name="action_copy">Kopiraj</string>
-    <string name="action_paste">Paste</string>
     <string name="loading">Nalaganje…</string>
     <string name="managed_by_lawnchair">Managed by Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dinamično</string>
     <string name="presets">Prednastavitve</string>
     <string name="custom">Po meri</string>
-    <string name="feed_default">Default</string>
     <string name="system">Sistem</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Stolpci</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Polnjenje</string>
-    <string name="smartspace_battery_full">Napolnjeno</string>
     <string name="smartspace_battery_low">Battery low</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Full in %2$s"</string>
     <string name="smartspace_widget">Na pogled</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Search</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Stran %1$d od %2$d</string>
     <string name="smartspace_widget_placeholder_date">Pet, Mar 3</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Novice</string>
     <string name="support">Podpora</string>
     <string name="product">Produkt</string>
-    <string name="design_and_development">Design &amp; development</string>
     <string name="development">Razvijanje</string>
     <string name="quickswitch_maintenance">QuickSwitch maintenance</string>
     <string name="devops">DevOps</string>
@@ -494,18 +488,14 @@
     <string name="all_apps_search_market_message">Search for more apps</string>
     <string name="all_apps_search_on_web_message">Search on <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">No app store or browser installed</string>
-    <string name="clear_history">Clear search history</string>
     <string name="search_input_action_clear_results">Clear search box</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Išči</string>
     <string name="show_app_search_bar">Show search bar</string>
     <string name="pref_search_auto_show_keyboard">Automatically show keyboard</string>
     <string name="fuzzy_search_title">Fuzzy search</string>
     <string name="fuzzy_search_desc">Approximate matching for app searches</string>
     <string name="suggestion_pref_screen_title">Predlogi</string>
     <string name="show_suggested_apps_at_drawer_top">Show suggested apps at the top of the drawer</string>
-    <string name="perform_wide_search_title">Device search</string>
-    <string name="perform_wide_search_description">Search your phone contacts, files, and settings</string>
     <string name="show_hidden_apps_in_search_results">Show hidden apps in search results</string>
     <string name="hidden_apps_show_name_typed">If full name is typed</string>
     <string name="app_search_algorithm">Search algorithm</string>
@@ -540,7 +530,6 @@
     <string name="warn_files_permission_content">To search your files, grant storage permissions to Lawnchair</string>
     <string name="grant_requested_permissions">Grant permissions</string>
     <string name="allapps_web_suggestion_provider_label">Web suggestion provider</string>
-    <string name="allapps_use_web_suggestion_icon_label">Show web suggestion provider icon in search bar</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Clicking the dock search bar will now open the app drawer search UI</string>
 </resources>

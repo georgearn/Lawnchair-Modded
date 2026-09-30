@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">预览</string>
     <string name="action_create">创建</string>
-    <string name="action_backup">备份</string>
     <string name="action_restore">恢复</string>
     <string name="action_delete">删除</string>
     <string name="action_reset">重置</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">剪贴板</string>
     <string name="action_copy_link">复制链接</string>
     <string name="action_copy">复制</string>
-    <string name="action_paste">粘贴</string>
     <string name="loading">正在加载…</string>
     <string name="managed_by_lawnchair">由 Lawnchair 管理</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">动态的</string>
     <string name="presets">预设</string>
     <string name="custom">自定义</string>
-    <string name="feed_default">默认</string>
     <string name="system">系统</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">列数</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">正在充电</string>
-    <string name="smartspace_battery_full">已充满</string>
     <string name="smartspace_battery_low">电量低</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — %2$s 后充满"</string>
     <string name="smartspace_widget">资讯一览</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google 搜索</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">第 %1$d / %2$d 页</string>
     <string name="smartspace_widget_placeholder_date">周五, 3月3日</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">新闻</string>
     <string name="support">支持</string>
     <string name="product">产品</string>
-    <string name="design_and_development">设计与开发</string>
     <string name="development">开发</string>
     <string name="quickswitch_maintenance">QuickSwitch 维护</string>
     <string name="devops">运维</string>
@@ -491,18 +485,14 @@
     <string name="all_apps_search_market_message">搜索更多应用</string>
     <string name="all_apps_search_on_web_message">在 <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g> 上搜索</string>
     <string name="error_no_market_or_browser_installed">应用商店或浏览器没安装</string>
-    <string name="clear_history">清除搜索记录</string>
     <string name="search_input_action_clear_results">清除搜索框</string>
     <!-- Search settings -->
-    <string name="pref_category_search">搜索</string>
     <string name="show_app_search_bar">显示搜索栏</string>
     <string name="pref_search_auto_show_keyboard">自动显示键盘</string>
     <string name="fuzzy_search_title">模糊搜索</string>
     <string name="fuzzy_search_desc">应用搜索近似匹配</string>
     <string name="suggestion_pref_screen_title">建议</string>
     <string name="show_suggested_apps_at_drawer_top">在抽屉顶部显示推荐的应用</string>
-    <string name="perform_wide_search_title">设备搜索</string>
-    <string name="perform_wide_search_description">搜索您的手机联系人、文件和设置</string>
     <string name="show_hidden_apps_in_search_results">在搜索结果中显示隐藏的应用</string>
     <string name="hidden_apps_show_name_typed">如果输入全名</string>
     <string name="app_search_algorithm">搜索算法</string>
@@ -537,7 +527,6 @@
     <string name="warn_files_permission_content">要搜索您的文件，请向 Lawnchair 授予存储权限</string>
     <string name="grant_requested_permissions">授予权限</string>
     <string name="allapps_web_suggestion_provider_label">网络建议提供程序</string>
-    <string name="allapps_use_web_suggestion_icon_label">在搜索栏中显示网络建议提供程序图标</string>
     <string name="allapps_match_qsb_style_label">匹配dock搜索栏操作</string>
     <string name="allapps_match_qsb_style_description">现在，点击 dock 搜索栏将打开应用程序抽屉</string>
 </resources>

@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Peržiūra</string>
     <string name="action_create">Sukurti</string>
-    <string name="action_backup">Sukurti atsarginę kopiją</string>
     <string name="action_restore">Atkurti</string>
     <string name="action_delete">Ištrinti</string>
     <string name="action_reset">Atstatyti</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Iškarpinė</string>
     <string name="action_copy_link">Kopijuoti nuorodą</string>
     <string name="action_copy">Kopijuoti</string>
-    <string name="action_paste">Įklijuoti</string>
     <string name="loading">Kraunasi…</string>
     <string name="managed_by_lawnchair">Valdoma „Lawnchair“</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dinamiškai</string>
     <string name="presets">Iš anksto nustatyti</string>
     <string name="custom">Pasirinktinis</string>
-    <string name="feed_default">Numatytas</string>
     <string name="system">Sistema</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Stulpeliai</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Kraunama</string>
-    <string name="smartspace_battery_full">Pakrautas</string>
     <string name="smartspace_battery_low">Battery low</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Visiškai įkrauta už %2$s"</string>
     <string name="smartspace_widget">Iš Pirmo Žvilgsnio</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Paieška</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">%1$d puslapis iš %2$d</string>
     <string name="smartspace_widget_placeholder_date">Pn, Kovo 3</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Naujienos</string>
     <string name="support">Paremti</string>
     <string name="product">Produktas</string>
-    <string name="design_and_development">Dizainas &amp; kūrimas</string>
     <string name="development">Plėtra</string>
     <string name="quickswitch_maintenance">QuickSwitch maintenance</string>
     <string name="devops">„DevOps“</string>
@@ -494,18 +488,14 @@
     <string name="all_apps_search_market_message">Search for more apps</string>
     <string name="all_apps_search_on_web_message">Search on <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">No app store or browser installed</string>
-    <string name="clear_history">Clear search history</string>
     <string name="search_input_action_clear_results">Clear search box</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Ieškokite</string>
     <string name="show_app_search_bar">Show search bar</string>
     <string name="pref_search_auto_show_keyboard">Automatically show keyboard</string>
     <string name="fuzzy_search_title">Fuzzy search</string>
     <string name="fuzzy_search_desc">Approximate matching for app searches</string>
     <string name="suggestion_pref_screen_title">Pasiūlymai</string>
     <string name="show_suggested_apps_at_drawer_top">Show suggested apps at the top of the drawer</string>
-    <string name="perform_wide_search_title">Device search</string>
-    <string name="perform_wide_search_description">Search your phone contacts, files, and settings</string>
     <string name="show_hidden_apps_in_search_results">Show hidden apps in search results</string>
     <string name="hidden_apps_show_name_typed">If full name is typed</string>
     <string name="app_search_algorithm">Search algorithm</string>
@@ -540,7 +530,6 @@
     <string name="warn_files_permission_content">To search your files, grant storage permissions to Lawnchair</string>
     <string name="grant_requested_permissions">Grant permissions</string>
     <string name="allapps_web_suggestion_provider_label">Web suggestion provider</string>
-    <string name="allapps_use_web_suggestion_icon_label">Show web suggestion provider icon in search bar</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Clicking the dock search bar will now open the app drawer search UI</string>
 </resources>

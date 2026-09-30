@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Podgląd</string>
     <string name="action_create">Utwórz</string>
-    <string name="action_backup">Kopia zapasowa</string>
     <string name="action_restore">Przywróć</string>
     <string name="action_delete">Usuń</string>
     <string name="action_reset">Reset</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Schowek</string>
     <string name="action_copy_link">Kopiuj link</string>
     <string name="action_copy">Kopiuj</string>
-    <string name="action_paste">Wklej</string>
     <string name="loading">Ładowanie…</string>
     <string name="managed_by_lawnchair">Zarządzane przez Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dynamiczne</string>
     <string name="presets">Ustawienia</string>
     <string name="custom">Własny</string>
-    <string name="feed_default">Domyślnie</string>
     <string name="system">System</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Kolumny</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Ładowanie</string>
-    <string name="smartspace_battery_full">Naładowano</string>
     <string name="smartspace_battery_low">Niski poziom baterii</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Naładowany za %2$s"</string>
     <string name="smartspace_widget">W skrócie</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Szukaj w Google</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Strona %1$d z %2$d</string>
     <string name="smartspace_widget_placeholder_date">Pią. 3 Mar</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Wiadomości</string>
     <string name="support">Wsparcie</string>
     <string name="product">Produkt</string>
-    <string name="design_and_development">Design i rozwój</string>
     <string name="development">Rozwój</string>
     <string name="quickswitch_maintenance">Rozwój QuickSwitcha</string>
     <string name="devops">UstDev</string>
@@ -494,18 +488,14 @@
     <string name="all_apps_search_market_message">Szukaj więcej aplikacji</string>
     <string name="all_apps_search_on_web_message">Szukaj w <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Nie zainstalowano sklepu z aplikacjami lub przeglądarki</string>
-    <string name="clear_history">Wyczyść historię wyszukiwania</string>
     <string name="search_input_action_clear_results">Wyczyść pasek wyszukiwania</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Szukaj</string>
     <string name="show_app_search_bar">Pokaż pasek wyszukiwania</string>
     <string name="pref_search_auto_show_keyboard">Automatycznie pokazuj klawiaturę</string>
     <string name="fuzzy_search_title">Wyszukiwanie rozmyte</string>
     <string name="fuzzy_search_desc">Przybliżone dopasowanie dla wyszukiwań aplikacji</string>
     <string name="suggestion_pref_screen_title">Sugestie</string>
     <string name="show_suggested_apps_at_drawer_top">Pokazuj najczęściej używane aplikacje na górze szuflady aplikacji</string>
-    <string name="perform_wide_search_title">Szukaj w urządzeniu</string>
-    <string name="perform_wide_search_description">Szukaj kontaktów, plików i ustawień telefonu</string>
     <string name="show_hidden_apps_in_search_results">Pokazuj ukryte aplikacje w wynikach wyszukiwania</string>
     <string name="hidden_apps_show_name_typed">Gdy wpisana jest cała nazwa</string>
     <string name="app_search_algorithm">Algorytm wyszukiwania</string>
@@ -540,7 +530,6 @@
     <string name="warn_files_permission_content">Aby móc przeszukiwać pliki, udziel Lawnchair uprawnienia do miejsca na dane</string>
     <string name="grant_requested_permissions">Przyznaj uprawnienia</string>
     <string name="allapps_web_suggestion_provider_label">Dostawca sugestii internetowych</string>
-    <string name="allapps_use_web_suggestion_icon_label">Pokaż ikonę dostawcy sugestii internetowych na pasku wyszukiwania</string>
     <string name="allapps_match_qsb_style_label">Dopasuj akcje paska wyszukiwania docka</string>
     <string name="allapps_match_qsb_style_description">Naciśnięcie paska wyszukiwania docka będzie teraz otwierało interfejs wyszukiwania szuflady aplikacji</string>
 </resources>

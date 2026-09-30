@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Voorbeeld</string>
     <string name="action_create">Aanmaken</string>
-    <string name="action_backup">Back-up</string>
     <string name="action_restore">Terugzetten</string>
     <string name="action_delete">Verwijderen</string>
     <string name="action_reset">Reset</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Klembord</string>
     <string name="action_copy_link">Koppeling kopiëren</string>
     <string name="action_copy">Kopiëren</string>
-    <string name="action_paste">Plakken</string>
     <string name="loading">Laden…</string>
     <string name="managed_by_lawnchair">Beheerd door Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dynamisch</string>
     <string name="presets">Voorinstellingen</string>
     <string name="custom">Aangepast</string>
-    <string name="feed_default">Standaard</string>
     <string name="system">Systeem</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Kolommen</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Opladen</string>
-    <string name="smartspace_battery_full">Opgeladen</string>
     <string name="smartspace_battery_low">Laag batterijniveau</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Vol in %2$s"</string>
     <string name="smartspace_widget">At a Glance</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Zoeken</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Pagina %1$d van %2$d</string>
     <string name="smartspace_widget_placeholder_date">Vr 3 mrt</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Nieuws</string>
     <string name="support">Ondersteuning</string>
     <string name="product">Product</string>
-    <string name="design_and_development">Ontwerp &amp; ontwikkeling</string>
     <string name="development">Ontwikkelaar</string>
     <string name="quickswitch_maintenance">QuickSwitch onderhoud</string>
     <string name="devops">DevOps</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">Meer apps zoeken</string>
     <string name="all_apps_search_on_web_message">Zoeken op <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Geen appwikel of browser geïnstalleerd</string>
-    <string name="clear_history">Zoekgeschiedenis wissen</string>
     <string name="search_input_action_clear_results">Zoekveld wissen</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Zoeken</string>
     <string name="show_app_search_bar">Zoekbalk weergeven</string>
     <string name="pref_search_auto_show_keyboard">Toetsenbord automatisch weergeven</string>
     <string name="fuzzy_search_title">Vage zoekopdracht</string>
     <string name="fuzzy_search_desc">Geschatte overeenkomst voor app zoeken</string>
     <string name="suggestion_pref_screen_title">Suggesties</string>
     <string name="show_suggested_apps_at_drawer_top">Voorgestelde apps bovenaan de app-lade weergeven</string>
-    <string name="perform_wide_search_title">Zoeken op apparaat</string>
-    <string name="perform_wide_search_description">Zoeken in de contacten, bestanden en instellingen van je telefoon</string>
     <string name="show_hidden_apps_in_search_results">Verborgen apps in zoekresultaten weergeven</string>
     <string name="hidden_apps_show_name_typed">Als volledige naam wordt getypt</string>
     <string name="app_search_algorithm">Zoekalgoritme</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">Om bestanden te doorzoeken, moet Lawnchair toegang krijgen tot opslag</string>
     <string name="grant_requested_permissions">Machtigingen verlenen</string>
     <string name="allapps_web_suggestion_provider_label">Websuggestie-aanbieder</string>
-    <string name="allapps_use_web_suggestion_icon_label">Pictogram van aanbieder van websuggesties in zoekbalk weergeven</string>
     <string name="allapps_match_qsb_style_label">Acties van de zoekbalk in het dok</string>
     <string name="allapps_match_qsb_style_description">Door op de zoekbalk van het dok te klikken, wordt nu zoeken in de app-lade geopend</string>
 </resources>

@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">प्रीव्यू</string>
     <string name="action_create">बनाएँ</string>
-    <string name="action_backup">Backup</string>
     <string name="action_restore">पुनर्स्थापित करें</string>
     <string name="action_delete">नष्ट करे</string>
     <string name="action_reset">रीसेट</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">क्लिपबोर्ड</string>
     <string name="action_copy_link">Copy link</string>
     <string name="action_copy">कॉपी</string>
-    <string name="action_paste">पेस्ट</string>
     <string name="loading">हो रहा है...</string>
     <string name="managed_by_lawnchair">Lawnchair द्वारा प्रबंधित</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">क्रियाशील</string>
     <string name="presets">पूर्व निर्धारित</string>
     <string name="custom">रुचि अनुसार</string>
-    <string name="feed_default">पहले जैसा</string>
     <string name="system">तंत्र</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">कॉलम</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">चार्ज हो रहा है</string>
-    <string name="smartspace_battery_full">चार्ज हो चुका है</string>
     <string name="smartspace_battery_low">Battery low</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% -- पूर्ति होगी %2$s में"</string>
     <string name="smartspace_widget">ऐट अ ग्लैन्स</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">गूगल</string>
     <string name="smartspace_mode_google_search">गूगल खोज</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" – "</string>
     <string name="accessibility_smartspace_page">पृष्ठ %1$d का %2$d</string>
     <string name="smartspace_widget_placeholder_date">शुक्र, मार्च ३</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">समाचार</string>
     <string name="support">सहयोग</string>
     <string name="product">उत्पाद</string>
-    <string name="design_and_development">Design &amp; development</string>
     <string name="development">विकास</string>
     <string name="quickswitch_maintenance">QuickSwitch maintenance</string>
     <string name="devops">देवऑप्स</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">Search for more apps</string>
     <string name="all_apps_search_on_web_message">Search on <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">No app store or browser installed</string>
-    <string name="clear_history">Clear search history</string>
     <string name="search_input_action_clear_results">Clear search box</string>
     <!-- Search settings -->
-    <string name="pref_category_search">खोजें</string>
     <string name="show_app_search_bar">Show search bar</string>
     <string name="pref_search_auto_show_keyboard">Automatically show keyboard</string>
     <string name="fuzzy_search_title">Fuzzy search</string>
     <string name="fuzzy_search_desc">Approximate matching for app searches</string>
     <string name="suggestion_pref_screen_title">सुझाव</string>
     <string name="show_suggested_apps_at_drawer_top">Show suggested apps at the top of the drawer</string>
-    <string name="perform_wide_search_title">Device search</string>
-    <string name="perform_wide_search_description">Search your phone contacts, files, and settings</string>
     <string name="show_hidden_apps_in_search_results">Show hidden apps in search results</string>
     <string name="hidden_apps_show_name_typed">If full name is typed</string>
     <string name="app_search_algorithm">Search algorithm</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">To search your files, grant storage permissions to Lawnchair</string>
     <string name="grant_requested_permissions">Grant permissions</string>
     <string name="allapps_web_suggestion_provider_label">Web suggestion provider</string>
-    <string name="allapps_use_web_suggestion_icon_label">Show web suggestion provider icon in search bar</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Clicking the dock search bar will now open the app drawer search UI</string>
 </resources>

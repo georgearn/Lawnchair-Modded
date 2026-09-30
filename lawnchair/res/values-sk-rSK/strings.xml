@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Náhľad</string>
     <string name="action_create">Vytvoriť</string>
-    <string name="action_backup">Zálohovanie</string>
     <string name="action_restore">Obnoviť</string>
     <string name="action_delete">Vymazať</string>
     <string name="action_reset">Reset</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Schránka</string>
     <string name="action_copy_link">Kopírovať odkaz</string>
     <string name="action_copy">Kopírovať</string>
-    <string name="action_paste">Prilepiť</string>
     <string name="loading">Načítava sa…</string>
     <string name="managed_by_lawnchair">Spravované Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dynamické</string>
     <string name="presets">Predvoľby</string>
     <string name="custom">Vlastné</string>
-    <string name="feed_default">Predvolené</string>
     <string name="system">Systém</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Stĺpce</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Nabíja sa</string>
-    <string name="smartspace_battery_full">Nabité</string>
     <string name="smartspace_battery_low">Nízka úroveň batérie</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Plná o %2$s"</string>
     <string name="smartspace_widget">Prehľad udalostí</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Search</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Strana %1$d z %2$d</string>
     <string name="smartspace_widget_placeholder_date">Pia, Mar 3</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Správy</string>
     <string name="support">Podpora</string>
     <string name="product">Produkt</string>
-    <string name="design_and_development">Dizajn &amp; Vývoj</string>
     <string name="development">Vývoj</string>
     <string name="quickswitch_maintenance">Údržba QuickSwitch</string>
     <string name="devops">DevOps</string>
@@ -494,18 +488,14 @@
     <string name="all_apps_search_market_message">Hľadať ďalšie aplikácie</string>
     <string name="all_apps_search_on_web_message">Vyhľadať v <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Nie je nainštalovaný žiadny obchod s aplikáciami ani prehliadač</string>
-    <string name="clear_history">Vymazať históriu vyhľadávania</string>
     <string name="search_input_action_clear_results">Vymazať vyhľadávacie pole</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Vyhľadávanie</string>
     <string name="show_app_search_bar">Ukázať vyhľadávacie okno</string>
     <string name="pref_search_auto_show_keyboard">Automaticky ukázať klávesnicu</string>
     <string name="fuzzy_search_title">Fuzzy search</string>
     <string name="fuzzy_search_desc">Approximate matching for app searches</string>
     <string name="suggestion_pref_screen_title">Návrhy</string>
     <string name="show_suggested_apps_at_drawer_top">Show suggested apps at the top of the drawer</string>
-    <string name="perform_wide_search_title">Vyhľadávanie zariadení</string>
-    <string name="perform_wide_search_description">Search your phone contacts, files, and settings</string>
     <string name="show_hidden_apps_in_search_results">Zobraziť skryté aplikácie vo vyhľadávaní</string>
     <string name="hidden_apps_show_name_typed">Ak je zadané celé meno</string>
     <string name="app_search_algorithm">Spôsob vyhľadávania aplikácii</string>
@@ -540,7 +530,6 @@
     <string name="warn_files_permission_content">Ak chcete vyhľadávať v súboroch, udeľte Lawnchair oprávnenia na ukladanie</string>
     <string name="grant_requested_permissions">Povoľte prístup</string>
     <string name="allapps_web_suggestion_provider_label">Poskytovateľ webových návrhov</string>
-    <string name="allapps_use_web_suggestion_icon_label">Zobraziť ikony poskytovateľa webových návrhov na paneli vyhľadávania</string>
     <string name="allapps_match_qsb_style_label">Akcie vyhľadávacieho panela v doku</string>
     <string name="allapps_match_qsb_style_description">Kliknutím na vyhľadávací panel v doku sa teraz otvorí používateľské rozhranie vyhľadávania v zásuvke aplikácií</string>
 </resources>

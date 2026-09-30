@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">معاينة</string>
     <string name="action_create">إنشاء</string>
-    <string name="action_backup">نسخ احتياطي</string>
     <string name="action_restore">استعادة</string>
     <string name="action_delete">حذف</string>
     <string name="action_reset">إعادة ضبط</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">الحافظة</string>
     <string name="action_copy_link">نسخ الرابط</string>
     <string name="action_copy">نسخ</string>
-    <string name="action_paste">لصق</string>
     <string name="loading">جارٍ التحميل…</string>
     <string name="managed_by_lawnchair">تتم الإدارة بواسطة Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">ديناميكية</string>
     <string name="presets">الإعدادات المسبقة</string>
     <string name="custom">تخصيص</string>
-    <string name="feed_default">افتراضي</string>
     <string name="system">نظام</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">أعمدة</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">جار الشحن</string>
-    <string name="smartspace_battery_full">تم الشحن</string>
     <string name="smartspace_battery_low">البطارية منخفضة</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — ممتلئ في %2$s"</string>
     <string name="smartspace_widget">لمحة</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">جوجل</string>
     <string name="smartspace_mode_google_search">بحث جوجل</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" _ "</string>
     <string name="accessibility_smartspace_page">الصفحة %1$d من %2$d</string>
     <string name="smartspace_widget_placeholder_date">الجمعة، 3 مارس</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">الأخبار</string>
     <string name="support">الدعم</string>
     <string name="product">المنتج</string>
-    <string name="design_and_development">التصميم والتطوير</string>
     <string name="development">التطوير</string>
     <string name="quickswitch_maintenance">صيانة QuickSwitch</string>
     <string name="devops">DevOps</string>
@@ -496,18 +490,14 @@
     <string name="all_apps_search_market_message">البحث عن المزيد من التطبيقات</string>
     <string name="all_apps_search_on_web_message">البحث على <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">لا يوجد متجر تطبيقات أو متصفح مثبت</string>
-    <string name="clear_history">مسح سجل البحث</string>
     <string name="search_input_action_clear_results">مسح مربع البحث</string>
     <!-- Search settings -->
-    <string name="pref_category_search">البحث</string>
     <string name="show_app_search_bar">إظهار شريط البحث</string>
     <string name="pref_search_auto_show_keyboard">عرض لوحة المفاتيح تلقائيًا</string>
     <string name="fuzzy_search_title">البحث الغامض</string>
     <string name="fuzzy_search_desc">مطابقة تقريبية لعمليات البحث عن التطبيقات</string>
     <string name="suggestion_pref_screen_title">اقتراحات</string>
     <string name="show_suggested_apps_at_drawer_top">إظهار التطبيقات المقترحة في أعلى الدرج</string>
-    <string name="perform_wide_search_title">بحث الجهاز</string>
-    <string name="perform_wide_search_description">البحث في جهات اتصال هاتفك، الملفات، والإعدادات</string>
     <string name="show_hidden_apps_in_search_results">إظهار التطبيقات المخفية في نتائج البحث</string>
     <string name="hidden_apps_show_name_typed">إذا تم كتابة الاسم الكامل</string>
     <string name="app_search_algorithm">خوارزمية البحث</string>
@@ -542,7 +532,6 @@
     <string name="warn_files_permission_content">للبحث في ملفاتك، امنح أذونات التخزين لـ Lawnchair</string>
     <string name="grant_requested_permissions">منح الأذونات</string>
     <string name="allapps_web_suggestion_provider_label">مزود اقتراحات الويب</string>
-    <string name="allapps_use_web_suggestion_icon_label">إظهار أيقونة مزود اقتراحات الويب في شريط البحث</string>
     <string name="allapps_match_qsb_style_label">مطابقة إجراءات شريط بحث dock</string>
     <string name="allapps_match_qsb_style_description">النقر على شريط بحث dock سيفتح الآن واجهة بحث درج التطبيقات</string>
 </resources>

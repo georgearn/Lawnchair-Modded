@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Előnézet</string>
     <string name="action_create">Létrehozás</string>
-    <string name="action_backup">Biztonsági mentés</string>
     <string name="action_restore">Visszaállítás</string>
     <string name="action_delete">Törlés</string>
     <string name="action_reset">Visszaállítás</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Vágólap</string>
     <string name="action_copy_link">Hivatkozás másolása</string>
     <string name="action_copy">Másolás</string>
-    <string name="action_paste">Beillesztés</string>
     <string name="loading">Betöltés…</string>
     <string name="managed_by_lawnchair">A Lawnchair által kezelve</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dinamikus</string>
     <string name="presets">Előbeállítások</string>
     <string name="custom">Egyéni</string>
-    <string name="feed_default">Alapértelmezett</string>
     <string name="system">Rendszer</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Oszlopok</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Töltés</string>
-    <string name="smartspace_battery_full">Feltöltve</string>
     <string name="smartspace_battery_low">Alacsony töltöttség</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% – %2$s múlva feltöltve"</string>
     <string name="smartspace_widget">At a Glance</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Kereső</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">%1$d. / %2$d oldal</string>
     <string name="smartspace_widget_placeholder_date">már. 3., P</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Hírek</string>
     <string name="support">Támogatás</string>
     <string name="product">Termék</string>
-    <string name="design_and_development">Dizájn és fejlesztés</string>
     <string name="development">Fejlesztés</string>
     <string name="quickswitch_maintenance">A QuickSwitch karbantartása</string>
     <string name="devops">DevOps</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">További alkalmazások keresése</string>
     <string name="all_apps_search_on_web_message">Keresés itt: <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Nincs alkalmazás-áruház vagy böngésző telepítve</string>
-    <string name="clear_history">Keresési előzmények törlése</string>
     <string name="search_input_action_clear_results">Keresőmező törlése</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Keresés</string>
     <string name="show_app_search_bar">Keresősáv megjelenítése</string>
     <string name="pref_search_auto_show_keyboard">Billentyűzet automatikus mutatása</string>
     <string name="fuzzy_search_title">Közelítő keresés</string>
     <string name="fuzzy_search_desc">Hozzávetőleges egyezés az alkalmazáskeresésekhez</string>
     <string name="suggestion_pref_screen_title">Javaslatok</string>
     <string name="show_suggested_apps_at_drawer_top">A javasolt alkalmazások megjelenítése az alkalmazástár tetején</string>
-    <string name="perform_wide_search_title">Keresés az eszközön</string>
-    <string name="perform_wide_search_description">Keresés a telefon névjegyei, fájljai és beállításai között</string>
     <string name="show_hidden_apps_in_search_results">A keresési eredményekben a rejtett alkalmazások is látszódnak</string>
     <string name="hidden_apps_show_name_typed">Ha a teljes nevet beírta</string>
     <string name="app_search_algorithm">Keresőalgoritmus</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">Fájlok kereséséhez adjon engedélyt a Lawnchairnek az eszköz tárhelyéhez</string>
     <string name="grant_requested_permissions">Engedély megadása</string>
     <string name="allapps_web_suggestion_provider_label">Webes javaslatok szolgáltatója</string>
-    <string name="allapps_use_web_suggestion_icon_label">Szolgáltató ikonjának megjelenítése a keresősávon</string>
     <string name="allapps_match_qsb_style_label">A dokk keresőjével megegyező művelet</string>
     <string name="allapps_match_qsb_style_description">A dokk keresősávjára kattintva az alkalmazástár keresőfelülete nyílik meg</string>
 </resources>

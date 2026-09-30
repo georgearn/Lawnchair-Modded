@@ -2,11 +2,16 @@ name: Build release APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - fiio-14-dev
 
 jobs:
   build-release-apk:
     runs-on: ubuntu-latest
     continue-on-error: true
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,10 +34,16 @@ jobs:
             echo ${{ secrets.KEYSTORE }} | base64 --decode > ${{ github.workspace }}/key.jks
           fi
       - name: Build release APK
-        run: ./gradlew assembleLawnWithQuickstepGithubRelease bundleLawnWithQuickstepPlayRelease
+        run: ./gradlew assembleLawnWithQuickstepRelease
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: Release APK
           path: build/outputs/*
-          
+      - name: Publish rolling release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest build
+          make_latest: true
+          files: build/outputs/apk/lawnWithQuickstep/release/*.apk

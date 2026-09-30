@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">முன்காட்சி</string>
     <string name="action_create">உருவாக்கு</string>
-    <string name="action_backup">மறுபிரதி</string>
     <string name="action_restore">மீட்டெடு</string>
     <string name="action_delete">நீக்கு</string>
     <string name="action_reset">அகரமாக்கு</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">நகலகம்</string>
     <string name="action_copy_link">இணைப்பை நகலெடு</string>
     <string name="action_copy">நகலெடு</string>
-    <string name="action_paste">ஒட்டவும்</string>
     <string name="loading">ஏற்றுகிறது…</string>
     <string name="managed_by_lawnchair">லான்ச்சர் மூலம் நிர்வகிக்கப்படுகிறது</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">இயங்குநிலை</string>
     <string name="presets">முன்னிருப்புகள்</string>
     <string name="custom">தனிப்பயன்</string>
-    <string name="feed_default">இயல்புநிலை</string>
     <string name="system">இயங்குதளம்</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">நெடுவரிசைகள்</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">மின் ஏறுகிறது</string>
-    <string name="smartspace_battery_full">மின் ஏறியது</string>
     <string name="smartspace_battery_low">பேட்டரி குறைவு</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — இன்னும் %2$s முழுவதாகிடும்"</string>
     <string name="smartspace_widget">ஒரே பார்வையில்</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">கூகிள்</string>
     <string name="smartspace_mode_google_search">கூகிள் தேடல்</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">பக்கம் %1$d / %2$d</string>
     <string name="smartspace_widget_placeholder_date">வெள்ளி, மார்ச் 3</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">செய்தி</string>
     <string name="support">ஆதரவு</string>
     <string name="product">தயாரிப்பு</string>
-    <string name="design_and_development">வடிவமைப்பு &amp; உருவாக்கம்</string>
     <string name="development">மேம்பாடு</string>
     <string name="quickswitch_maintenance">விரைமாற்று பராமரிப்பு</string>
     <string name="devops">டெவ்ஆப்ஸ்</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">மேலும் செயலிகளுக்காகத் தேடு</string>
     <string name="all_apps_search_on_web_message"><xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g> யில் தேடு</string>
     <string name="error_no_market_or_browser_installed">ஆப் ஸ்டோர் அல்லது உலாவி நிறுவப்படவில்லை</string>
-    <string name="clear_history">தேடல் வரலாற்றை அழி</string>
     <string name="search_input_action_clear_results">தேடல் பெட்டியைத் அழி</string>
     <!-- Search settings -->
-    <string name="pref_category_search">தேடல்</string>
     <string name="show_app_search_bar">தேடல் பட்டை காட்டு</string>
     <string name="pref_search_auto_show_keyboard">தானாக விசைப்பலகையைக் காட்டு</string>
     <string name="fuzzy_search_title">தெளிவறு தேடல்</string>
     <string name="fuzzy_search_desc">செயலி தேடல்களுக்குத் தோராய பொருத்தம்</string>
     <string name="suggestion_pref_screen_title">பரிந்துரைகள்</string>
     <string name="show_suggested_apps_at_drawer_top">பரிந்துரைக்கப்பட்ட செயலிகளை டிராயரின் மேற்புறத்தில் காண்பி</string>
-    <string name="perform_wide_search_title">சாதனத் தேடல்</string>
-    <string name="perform_wide_search_description">உங்கள் தொலைபேசி தொடர்புகள், கோப்புகள் மற்றும் அமைப்புகளைத் தேடுங்கள்</string>
     <string name="show_hidden_apps_in_search_results">தேடல் முடிவுகளில் மறைக்கப்பட்ட செயலிகளைக் காண்பி</string>
     <string name="hidden_apps_show_name_typed">முழுப்பெயர் தட்டச்சு செய்யப்பட்டால்</string>
     <string name="app_search_algorithm">தேடல் அல்காரிதம்</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">உங்கள் கோப்புகளைத் தேட, Lawnchair க்கு சேமிப்பக அனுமதிகளை வழங்கவும்</string>
     <string name="grant_requested_permissions">அனுமதிகளை வழங்கவும்</string>
     <string name="allapps_web_suggestion_provider_label">வலை பரிந்துரைகள் வழங்குநர்</string>
-    <string name="allapps_use_web_suggestion_icon_label">தேடல் பட்டியில் வலை பரிந்துரை வழங்குநர் ஐகானைக் காட்டு</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Clicking the dock search bar will now open the app drawer search UI</string>
 </resources>

@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Преглед</string>
     <string name="action_create">Направи</string>
-    <string name="action_backup">Направи резервну копију</string>
     <string name="action_restore">Врати</string>
     <string name="action_delete">Избриши</string>
     <string name="action_reset">Ресетуј</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Привремена меморија</string>
     <string name="action_copy_link">Копирај линк</string>
     <string name="action_copy">Копирај</string>
-    <string name="action_paste">Налепи</string>
     <string name="loading">Учитава се…</string>
     <string name="managed_by_lawnchair">Управља Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Динамичка</string>
     <string name="presets">Шаблони</string>
     <string name="custom">Прилагођена</string>
-    <string name="feed_default">Подразумевано</string>
     <string name="system">Системска</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Колоне</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Пуни се</string>
-    <string name="smartspace_battery_full">Напуњено</string>
     <string name="smartspace_battery_low">Батерија је на измаку</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — напуњен за %2$s"</string>
     <string name="smartspace_widget">Кратак преглед</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google претрага</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Страница %1$d од %2$d</string>
     <string name="smartspace_widget_placeholder_date">Петак, 3. март</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Новости</string>
     <string name="support">Подршка</string>
     <string name="product">Производ</string>
-    <string name="design_and_development">Дизајн и развој</string>
     <string name="development">Развој</string>
     <string name="quickswitch_maintenance">Одржавање QuickSwitch-а</string>
     <string name="devops">DevOps</string>
@@ -493,18 +487,14 @@
     <string name="all_apps_search_market_message">Претражите још апликација</string>
     <string name="all_apps_search_on_web_message">Претражите помоћу услуге <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Није инсталирана продавница апликација ни прегледач</string>
-    <string name="clear_history">Обриши историју претраге</string>
     <string name="search_input_action_clear_results">Обриши поље за претрагу</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Претражи</string>
     <string name="show_app_search_bar">Прикажи траку за претрагу</string>
     <string name="pref_search_auto_show_keyboard">Аутоматски приказуј тастатуру</string>
     <string name="fuzzy_search_title">Приближна претрага</string>
     <string name="fuzzy_search_desc">Приближни резултати претраге на основу упита</string>
     <string name="suggestion_pref_screen_title">Предлози</string>
     <string name="show_suggested_apps_at_drawer_top">Приказуј предложене апликације на врху листе апликација</string>
-    <string name="perform_wide_search_title">Претрага уређаја</string>
-    <string name="perform_wide_search_description">Претражите контакте, фајлове и подешавања</string>
     <string name="show_hidden_apps_in_search_results">Приказуј скривене апликације у резултатима претраге</string>
     <string name="hidden_apps_show_name_typed">Ако је унет пун назив</string>
     <string name="app_search_algorithm">Алгоритам претраге</string>
@@ -539,7 +529,6 @@
     <string name="warn_files_permission_content">Да бисте претраживали фајлове, доделите Lawnchair-у приступ меморији</string>
     <string name="grant_requested_permissions">Додели дозволе</string>
     <string name="allapps_web_suggestion_provider_label">Добављач веб-предлога</string>
-    <string name="allapps_use_web_suggestion_icon_label">Прикажи икону добављача веб-предлога на траци за претрагу</string>
     <string name="allapps_match_qsb_style_label">Подударај радње траке за претрагу на доку</string>
     <string name="allapps_match_qsb_style_description">Кликом на претрагу у доку сада отвара интерфејс за претрагу апликација</string>
 </resources>

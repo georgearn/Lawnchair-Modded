@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Ön izleme</string>
     <string name="action_create">Oluştur</string>
-    <string name="action_backup">Yedek</string>
     <string name="action_restore">Eski haline getir</string>
     <string name="action_delete">Sil</string>
     <string name="action_reset">Sıfırla</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Pano</string>
     <string name="action_copy_link">Bağlantıyı kopyala</string>
     <string name="action_copy">Kopyala</string>
-    <string name="action_paste">Yapıştır</string>
     <string name="loading">Yükleniyor…</string>
     <string name="managed_by_lawnchair">Lawnchair tarafından yönetilmektedir</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dinamik</string>
     <string name="presets">Ön Ayarlar</string>
     <string name="custom">Özel</string>
-    <string name="feed_default">Varsayılan</string>
     <string name="system">Sistem</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Sütunlar</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Şarj ediliyor</string>
-    <string name="smartspace_battery_full">Şarj oldu</string>
     <string name="smartspace_battery_low">Pil zayıf</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — %2$s içinde tamamen dolacak"</string>
     <string name="smartspace_widget">Bir Bakışta</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Google Arama</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Sayfa %1$d of %2$d</string>
     <string name="smartspace_widget_placeholder_date">3 Mart Cuma</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Haberler</string>
     <string name="support">Destek</string>
     <string name="product">Ürün</string>
-    <string name="design_and_development">Tasarım &amp; geliştirme</string>
     <string name="development">Geliştirme</string>
     <string name="quickswitch_maintenance">QuickSwitch bakımı</string>
     <string name="devops">DevOps</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">Daha fazla uygulama arayın</string>
     <string name="all_apps_search_on_web_message"><xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g> üzerinde ara</string>
     <string name="error_no_market_or_browser_installed">Yüklü uygulama mağazası veya tarayıcı yok</string>
-    <string name="clear_history">Arama geçmişini temizle</string>
     <string name="search_input_action_clear_results">Arama kutusunu temizle</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Ara</string>
     <string name="show_app_search_bar">Arama çubuğunu göster</string>
     <string name="pref_search_auto_show_keyboard">Klavyeyi otomatik göster</string>
     <string name="fuzzy_search_title">Yaklaşık Arama</string>
     <string name="fuzzy_search_desc">Uygulama aramaları için yaklaşık eşleşme</string>
     <string name="suggestion_pref_screen_title">Öneriler</string>
     <string name="show_suggested_apps_at_drawer_top">Önerilen uygulamaları çekmecenin üst kısmında göster</string>
-    <string name="perform_wide_search_title">Cihaz arama</string>
-    <string name="perform_wide_search_description">Telefonunuzdaki kişiler, dosyalar ve ayarlarda arama yapın</string>
     <string name="show_hidden_apps_in_search_results">Arama sonuçlarında gizli uygulamaları göster</string>
     <string name="hidden_apps_show_name_typed">Tam ad yazılırsa</string>
     <string name="app_search_algorithm">Arama algoritması</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">Dosyalarınızda arama yapmak için Lawnchair\'a Depolama izinlerini verin</string>
     <string name="grant_requested_permissions">İzinleri ver</string>
     <string name="allapps_web_suggestion_provider_label">Web önerisi sağlayıcısı</string>
-    <string name="allapps_use_web_suggestion_icon_label">Arama çubuğunda web önerisi sağlayıcı simgesini göster</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Alt sıra arama çubuğuna tıklamak artık uygulama çekmecesi arama arayüzünü açar</string>
 </resources>

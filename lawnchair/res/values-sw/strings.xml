@@ -157,7 +157,6 @@
     <string name="hex">Hex</string>
     <string name="color_sliders">Vitelezi</string>
     <string name="action_copy">Nakili</string>
-    <string name="action_paste">Bandika</string>
     <string name="copied_toast">Imenakiliwa kwenye ubao wa kunakili.</string>
     <string name="invalid_color">Rangi batili</string>
     <string name="launcher_default_color">Inasimamiwa na Lawnchair</string>
@@ -203,7 +202,6 @@
     <!-- Smartspace -->
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <string name="smartspace_battery_charging">Kuchaji</string>
-    <string name="smartspace_battery_full">Imechajiwa</string>
     <string name="smartspace_battery_low">Betri Imekamilika</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Itajaa baada ya %2$s"</string>
     <string name="accessibility_smartspace_page">Ukurasa %1$d of %2$d</string>
@@ -224,7 +222,6 @@
     <string name="smartspace_now_playing">Inacheza sasa</string>
     <string name="smartspace_requires_setup">Gusa ili kusanidi</string>
     <string name="event_provider_missing_notification_dots">Kutumia <xliff:g example="My Provider" id="providerName">%1$s</xliff:g>wezesha nukta za arifa.</string>
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="smartspace_calendar_gregorian">Gregorian</string>
     <string name="smartspace_calendar_persian">Kiajemi</string>
     <string name="smartspace_preferences">Mapendeleo</string>
@@ -260,7 +257,6 @@
     <string name="hidden_apps_label">Programu Zilizofichwa</string>
     <string name="show_enable_smart_hide">Onyesha Wakati Jina Kamili Limechapwa</string>
     <string name="hide_hidden_apps_search">Ficha kwenye Matokeo ya Utafutaji</string>
-    <string name="pref_category_search">Tafuta</string>
     <string name="show_app_search_bar">Onyesha Upau wa Utafutaji</string>
     <string name="pref_search_auto_show_keyboard">Onyesha Kibodi kiotomatiki</string>
     <string name="fuzzy_search_title">Utafutaji wa kifuzzy</string>
@@ -322,7 +318,6 @@
     <string name="news">Habari</string>
     <string name="support">Msaada</string>
     <string name="product">Bidhaa</string>
-    <string name="design_and_development">Kubuni &amp; Kujenga</string>
     <string name="development">Kujenga</string>
     <string name="quickswitch_maintenance">Matengenezo ya QuickSwitch</string>
     <string name="devops">DevOps</string>

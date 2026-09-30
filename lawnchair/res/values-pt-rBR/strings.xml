@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Pré-visualização</string>
     <string name="action_create">Criar</string>
-    <string name="action_backup">Fazer backup</string>
     <string name="action_restore">Restaurar</string>
     <string name="action_delete">Apagar</string>
     <string name="action_reset">Redefinir</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Área de transferência</string>
     <string name="action_copy_link">Copiar link</string>
     <string name="action_copy">Copiar</string>
-    <string name="action_paste">Colar</string>
     <string name="loading">Carregando…</string>
     <string name="managed_by_lawnchair">Gerenciado por Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dinâmico</string>
     <string name="presets">Predefinições</string>
     <string name="custom">Personalizar</string>
-    <string name="feed_default">Padrão</string>
     <string name="system">Sistema</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Colunas</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Carregando</string>
-    <string name="smartspace_battery_full">Carregado</string>
     <string name="smartspace_battery_low">Bateria Fraca</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Termina em %2$s"</string>
     <string name="smartspace_widget">Resumo</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Pesquisa do Google</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Página %1$d de %2$d</string>
     <string name="smartspace_widget_placeholder_date">Sex, 13 de Mar</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Novidades</string>
     <string name="support">Suporte</string>
     <string name="product">Produto</string>
-    <string name="design_and_development">Design &amp; desenvolvimento</string>
     <string name="development">Desenvolvimento</string>
     <string name="quickswitch_maintenance">Manutenção do QuickSwitch</string>
     <string name="devops">DevOps</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">Pesquisar por mais aplicativos</string>
     <string name="all_apps_search_on_web_message">Pesquisar em <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Nenhuma loja de aplicativos ou navegador instalado</string>
-    <string name="clear_history">Limpar histórico de pesquisas</string>
     <string name="search_input_action_clear_results">Limpar caixa de pesquisa</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Pesquisar</string>
     <string name="show_app_search_bar">Mostrar barra de pesquisa</string>
     <string name="pref_search_auto_show_keyboard">Mostrar o teclado automaticamente</string>
     <string name="fuzzy_search_title">Pesquisa aproximada</string>
     <string name="fuzzy_search_desc">Correspondência aproximada para pesquisas de apps</string>
     <string name="suggestion_pref_screen_title">Sugestões</string>
     <string name="show_suggested_apps_at_drawer_top">Mostrar aplicativos sugeridos na parte superior da gaveta de aplicativos</string>
-    <string name="perform_wide_search_title">Pesquisa no dispositivo</string>
-    <string name="perform_wide_search_description">Procurar nos contatos, arquivos e configurações do seu telefone</string>
     <string name="show_hidden_apps_in_search_results">Mostrar aplicativos ocultos nos resultados da pesquisa</string>
     <string name="hidden_apps_show_name_typed">Se o nome completo for digitado</string>
     <string name="app_search_algorithm">Algoritmo de pesquisa</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">Para pesquisar nos seus arquivos, permita a permissão de Armazenamento ao Lawnchair</string>
     <string name="grant_requested_permissions">Permitir permissões</string>
     <string name="allapps_web_suggestion_provider_label">Provedor de sugestões da web</string>
-    <string name="allapps_use_web_suggestion_icon_label">Mostrar o ícone do provedor de sugestões da web na barra de pesquisa</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Clicking the dock search bar will now open the app drawer search UI</string>
 </resources>

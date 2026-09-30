@@ -62,7 +62,6 @@
     <string name="auto_adaptive_icons_label">Auto Adaptive Icons</string>
     <string name="auto_adaptive_icons_description">For all non-Adaptive icons.</string>
     <string name="support_and_pr">Support &amp; PR</string>
-    <string name="design_and_development">Design &amp; Development</string>
     <string name="translate">Translate</string>
     <string name="product">Product</string>
     <string name="hidden_apps_label">Hidden Apps</string>
@@ -120,7 +119,6 @@
     <string name="font_label">Font (Experimental)</string>
     <string name="reset_font">Reset</string>
     <string name="search_input_action_clear_results">Clear Search Box</string>
-    <string name="pref_category_search">Search</string>
     <string name="pref_search_auto_show_keyboard">Automatically Show Keyboard</string>
     <string name="label_search">Search</string>
     <string name="label_lens">Google Lens</string>

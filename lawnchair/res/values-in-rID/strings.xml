@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Pratinjau</string>
     <string name="action_create">Buat</string>
-    <string name="action_backup">Cadangkan</string>
     <string name="action_restore">Pulihkan</string>
     <string name="action_delete">Hapus</string>
     <string name="action_reset">Atur ulang</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Papan klip</string>
     <string name="action_copy_link">Salin tautan</string>
     <string name="action_copy">Salin</string>
-    <string name="action_paste">Tempel</string>
     <string name="loading">Memuat…</string>
     <string name="managed_by_lawnchair">Dikelola oleh Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Dinamis</string>
     <string name="presets">Preset</string>
     <string name="custom">Kustom</string>
-    <string name="feed_default">Standar</string>
     <string name="system">Sistem</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Kolom</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Mengisi daya</string>
-    <string name="smartspace_battery_full">Daya terisi penuh</string>
     <string name="smartspace_battery_low">Baterai lemah</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Penuh dalam %2$s"</string>
     <string name="smartspace_widget">At a Glance</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Pencarian Google</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">" — "</string>
     <string name="accessibility_smartspace_page">Halaman %1$d dari %2$d</string>
     <string name="smartspace_widget_placeholder_date">Jumat, 3 Maret</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Berita</string>
     <string name="support">Dukungan</string>
     <string name="product">Produk</string>
-    <string name="design_and_development">Desain &amp; pengembangan</string>
     <string name="development">Pengembangan</string>
     <string name="quickswitch_maintenance">Pemeliharaan QuickSwitch</string>
     <string name="devops">DevOps</string>
@@ -491,18 +485,14 @@
     <string name="all_apps_search_market_message">Cari lebih banyak aplikasi</string>
     <string name="all_apps_search_on_web_message">Search on <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Tidak ada toko aplikasi atau browser yang terinstal</string>
-    <string name="clear_history">Bersihkan riwayat pencarian</string>
     <string name="search_input_action_clear_results">Bersihkan bilah pencarian</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Cari</string>
     <string name="show_app_search_bar">Tampilkan bilah pencarian</string>
     <string name="pref_search_auto_show_keyboard">Tampilkan keyboard otomatis</string>
     <string name="fuzzy_search_title">Pencarian acak</string>
     <string name="fuzzy_search_desc">Perkirakan kecocokan untuk pencarian aplikasi</string>
     <string name="suggestion_pref_screen_title">Saran</string>
     <string name="show_suggested_apps_at_drawer_top">Tampilkan saran aplikasi di bagian atas laci</string>
-    <string name="perform_wide_search_title">Pencarian perangkat</string>
-    <string name="perform_wide_search_description">Cari kontak, berkas, dan pengaturan Anda</string>
     <string name="show_hidden_apps_in_search_results">Tampilkan aplikasi tersembunyi dalam hasil pencarian</string>
     <string name="hidden_apps_show_name_typed">Jika nama lengkap diketik</string>
     <string name="app_search_algorithm">Algoritma pencarian</string>
@@ -537,7 +527,6 @@
     <string name="warn_files_permission_content">Untuk mencari berkas Anda, berikan izin penyimpanan ke Lawnchair</string>
     <string name="grant_requested_permissions">Berikan izin</string>
     <string name="allapps_web_suggestion_provider_label">Web suggestion provider</string>
-    <string name="allapps_use_web_suggestion_icon_label">Show web suggestion provider icon in search bar</string>
     <string name="allapps_match_qsb_style_label">Match dock search bar actions</string>
     <string name="allapps_match_qsb_style_description">Clicking the dock search bar will now open the app drawer search UI</string>
 </resources>

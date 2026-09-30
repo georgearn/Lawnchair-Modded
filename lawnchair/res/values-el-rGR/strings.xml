@@ -23,7 +23,6 @@
     -->
     <string name="preview_label">Προεπισκόπηση</string>
     <string name="action_create">Δημιουργία</string>
-    <string name="action_backup">Αντίγραφα ασφαλείας</string>
     <string name="action_restore">Επαναφορά</string>
     <string name="action_delete">Διαγραφή</string>
     <string name="action_reset">Επαναφορά</string>
@@ -36,7 +35,6 @@
     <string name="clipboard">Πρόχειρο</string>
     <string name="action_copy_link">Αντιγραφή συνδέσμου</string>
     <string name="action_copy">Αντιγραφή</string>
-    <string name="action_paste">Επικόλληση</string>
     <string name="loading">Φόρτωση…</string>
     <string name="managed_by_lawnchair">Διαχειριζόμενο από τον εκκινητή Lawnchair</string>
     <!-- When mentioning settings UI -->
@@ -53,7 +51,6 @@
     <string name="dynamic">Δυναμικό</string>
     <string name="presets">Προεπιλογές</string>
     <string name="custom">Προσαρμοσμένο</string>
-    <string name="feed_default">Προεπιλογή</string>
     <string name="system">Σύστημα</string>
     <!-- Relating to the Launcher ui -->
     <string name="columns">Στήλες</string>
@@ -259,7 +256,6 @@
     <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Φόρτιση</string>
-    <string name="smartspace_battery_full">Φορτισμένο</string>
     <string name="smartspace_battery_low">Χαμηλή μπαταρία</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% • Πλήρης φόρτιση σε %2$s"</string>
     <string name="smartspace_widget">Με μια Ματιά</string>
@@ -292,7 +288,6 @@
     <string name="smartspace_mode_google">Google</string>
     <string name="smartspace_mode_google_search">Αναζήτηση Google</string>
     <!-- Miscellaneous Smartspace strings -->
-    <string name="smartspace_media_info_separator">"•"</string>
     <string name="accessibility_smartspace_page">Σελίδα %1$d από %2$d</string>
     <string name="smartspace_widget_placeholder_date">Παρ, 3 Μαρ</string>
     <!--
@@ -303,7 +298,6 @@
     <string name="news">Νέα</string>
     <string name="support">Υποστήριξη</string>
     <string name="product">Προϊόν</string>
-    <string name="design_and_development">Σχεδιασμός &amp; ανάπτυξη</string>
     <string name="development">Ανάπτυξη</string>
     <string name="quickswitch_maintenance">Συντήρηση λειτουργίας QuickSwitch</string>
     <string name="devops">Προγραμματιστές</string>
@@ -492,18 +486,14 @@
     <string name="all_apps_search_market_message">Αναζήτηση για περισσότερες εφαρμογές</string>
     <string name="all_apps_search_on_web_message">Αναζήτηση στο <xliff:g example="Startpage" id="web_search_provider">%1$s</xliff:g></string>
     <string name="error_no_market_or_browser_installed">Δεν υπάρχει εγκατεστημένο κατάστημα εφαρμογών ή πρόγραμμα περιήγησης</string>
-    <string name="clear_history">Εκκαθάριση ιστορικού αναζήτησης</string>
     <string name="search_input_action_clear_results">Εκκαθάριση πλαισίου αναζήτησης</string>
     <!-- Search settings -->
-    <string name="pref_category_search">Αναζήτηση</string>
     <string name="show_app_search_bar">Εμφάνιση μπάρας αναζήτησης</string>
     <string name="pref_search_auto_show_keyboard">Αυτόματη εμφάνιση πληκτρολογίου</string>
     <string name="fuzzy_search_title">Ασαφής αναζήτηση</string>
     <string name="fuzzy_search_desc">Αντιστοίχιση κατά προσέγγιση για αναζητήσεις εφαρμογών</string>
     <string name="suggestion_pref_screen_title">Προτάσεις</string>
     <string name="show_suggested_apps_at_drawer_top">Εμφάνιση προτεινόμενων εφαρμογών στο επάνω μέρος του συρταριού εφαρμογών</string>
-    <string name="perform_wide_search_title">Αναζήτηση συσκευής</string>
-    <string name="perform_wide_search_description">Αναζήτηση επαφών, αρχείων και ρυθμίσεων του τηλεφώνου σας</string>
     <string name="show_hidden_apps_in_search_results">Εμφάνιση κρυφών εφαρμογών στα αποτελέσματα αναζήτησης</string>
     <string name="hidden_apps_show_name_typed">Εάν πληκτρολογηθεί το πλήρες όνομα</string>
     <string name="app_search_algorithm">Αλγόριθμος αναζήτησης</string>
@@ -538,7 +528,6 @@
     <string name="warn_files_permission_content">Για αναζήτηση στα αρχεία σας, εκχωρήστε δικαιώματα ανάγνωσης αποθηκευτικού χώρου στον εκκινητή Lawnchair</string>
     <string name="grant_requested_permissions">Εκχώρηση δικαιωμάτων</string>
     <string name="allapps_web_suggestion_provider_label">Πάροχος προτάσεων ιστού</string>
-    <string name="allapps_use_web_suggestion_icon_label">Χρήση εικονιδίου παρόχου προτάσεων ιστού στη μπάρα αναζήτησης</string>
     <string name="allapps_match_qsb_style_label">Ταίριασμα ενεργειών γραφικού στοιχείου αναζήτησης μπάρας εφαρμογών</string>
     <string name="allapps_match_qsb_style_description">Κάνοντας κλικ στο γραφικό στοιχείο αναζήτησης της μπάρας εφαρμογών θα ανοίγει πλέον η αναζήτηση του συρταριού εφαρμογών</string>
 </resources>
