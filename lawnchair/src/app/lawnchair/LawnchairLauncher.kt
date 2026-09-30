@@ -21,7 +21,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Display
 import android.view.View
 import android.view.ViewTreeObserver
@@ -104,21 +103,8 @@ class LawnchairLauncher : QuickstepLauncher() {
         }
         override fun onStateTransitionComplete(finalState: LauncherState) {}
     }
-    private val hideClockStateListener = object : StateManager.StateListener<LauncherState> {
-        override fun onStateTransitionStart(toState: LauncherState) {
-            if (toState != LauncherState.NORMAL) {
-                setStatusBarClockHidden(false)
-            }
-        }
-        override fun onStateTransitionComplete(finalState: LauncherState) {
-            if (finalState == LauncherState.NORMAL) {
-                setStatusBarClockHidden(true)
-            }
-        }
-    }
     private lateinit var colorScheme: ColorScheme
     private var hasBackGesture = false
-    private var hideClockOnHomeScreen = false
 
     val gestureController by unsafeLazy { GestureController(this) }
 
@@ -154,19 +140,6 @@ class LawnchairLauncher : QuickstepLauncher() {
                     removeStateListener(noStatusBarStateListener)
                 } else {
                     addStateListener(noStatusBarStateListener)
-                }
-            }
-        }.launchIn(scope = lifecycleScope)
-
-        preferenceManager2.hideClockOnHomeScreen.get().distinctUntilChanged().onEach {
-            hideClockOnHomeScreen = it
-            with(launcher.stateManager) {
-                if (it) {
-                    addStateListener(hideClockStateListener)
-                    if (isInState(LauncherState.NORMAL)) setStatusBarClockHidden(true)
-                } else {
-                    removeStateListener(hideClockStateListener)
-                    setStatusBarClockHidden(false)
                 }
             }
         }.launchIn(scope = lifecycleScope)
@@ -342,10 +315,6 @@ class LawnchairLauncher : QuickstepLauncher() {
         super.onResume()
         restartIfPending()
 
-        if (hideClockOnHomeScreen && isInState(LauncherState.NORMAL)) {
-            setStatusBarClockHidden(true)
-        }
-
         dragLayer.viewTreeObserver.addOnDrawListener(object : ViewTreeObserver.OnDrawListener {
             private var handled = false
 
@@ -361,26 +330,6 @@ class LawnchairLauncher : QuickstepLauncher() {
                 depthController
             }
         })
-    }
-
-    override fun onPause() {
-        if (hideClockOnHomeScreen) {
-            setStatusBarClockHidden(false)
-        }
-        super.onPause()
-    }
-
-    private fun setStatusBarClockHidden(hidden: Boolean) {
-        val key = "icon_blacklist"
-        val current = Settings.Secure.getString(contentResolver, key).orEmpty()
-        val tokens = current.split(',').filter { it.isNotBlank() && it != "clock" }
-        val updated = (if (hidden) tokens + "clock" else tokens).joinToString(",")
-        if (updated == current) return
-        try {
-            Settings.Secure.putString(contentResolver, key, updated)
-        } catch (e: SecurityException) {
-            // WRITE_SECURE_SETTINGS is only granted when installed as a system app.
-        }
     }
 
     override fun onDestroy() {
