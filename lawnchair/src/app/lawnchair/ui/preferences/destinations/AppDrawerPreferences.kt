@@ -96,7 +96,7 @@ fun AppDrawerPreferences(
                     label = stringResource(id = R.string.app_drawer_columns),
                     adapter = prefs2.drawerColumns.getAdapter(),
                     step = 1,
-                    valueRange = 5..10,
+                    valueRange = 3..10,
                 )
             }
             SliderPreference(

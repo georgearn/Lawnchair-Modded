@@ -64,37 +64,16 @@ public class MediaListener extends MediaController.Callback {
         return mTracking;
     }
 
-    public boolean isPlaying() {
-        return mTracking != null && mTracking.isPlaying();
-    }
-
-    public void playPause() {
-        pressButton(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
-    }
-
-    public void skipToNext() {
-        pressButton(KeyEvent.KEYCODE_MEDIA_NEXT);
-    }
-
-    public void skipToPrevious() {
-        pressButton(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
-    }
-
     public String getPackage() {
         return mTracking.controller.getPackageName();
     }
 
     private void updateControllers(List<MediaNotificationController> controllers) {
-        // Controllers are reused across updates, so only touch the ones that came or went.
         for (MediaNotificationController mnc : mControllers) {
-            if (!controllers.contains(mnc)) {
-                mnc.controller.unregisterCallback(this);
-            }
+            mnc.controller.unregisterCallback(this);
         }
         for (MediaNotificationController mnc : controllers) {
-            if (!mControllers.contains(mnc)) {
-                mnc.controller.registerCallback(this);
-            }
+            mnc.controller.registerCallback(this);
         }
         mControllers = controllers;
     }
@@ -102,18 +81,21 @@ public class MediaListener extends MediaController.Callback {
     private void updateTracking() {
         updateControllers(getControllers());
 
-        // Stop tracking only once the notification/session is actually gone,
-        // so a paused track keeps showing instead of disappearing.
+        if (mTracking != null) {
+            mTracking.reloadInfo();
+        }
+
+        // If the current controller is not playing, stop tracking it.
         if (mTracking != null
-                && (!mControllers.contains(mTracking) || !mTracking.hasInfo())) {
+                && (!mControllers.contains(mTracking) || !mTracking.isPlaying())) {
             mTracking = null;
         }
 
         for (MediaNotificationController mnc : mControllers) {
-            if (!mnc.hasInfo()) continue;
             // Either we are not tracking a controller and this one is valid,
             // or this one is playing while the one we track is not.
-            if (mTracking == null || (mnc.isPlaying() && !mTracking.isPlaying())) {
+            if ((mTracking == null && mnc.isPlaying())
+                    || (mTracking != null && mnc.isPlaying() && !mTracking.isPlaying())) {
                 mTracking = mnc;
             }
         }
@@ -151,30 +133,14 @@ public class MediaListener extends MediaController.Callback {
         }
     }
 
-    private MediaNotificationController findController(MediaSession.Token token) {
-        for (MediaNotificationController mnc : mControllers) {
-            if (token.equals(mnc.controller.getSessionToken())) {
-                return mnc;
-            }
-        }
-        return null;
-    }
-
     private List<MediaNotificationController> getControllers() {
         List<MediaNotificationController> controllers = new ArrayList<>();
         for (StatusBarNotification notif : mNotifications) {
             Bundle extras = notif.getNotification().extras;
             MediaSession.Token notifToken = extras.getParcelable(Notification.EXTRA_MEDIA_SESSION);
             if (notifToken != null) {
-                MediaNotificationController existing = findController(notifToken);
-                if (existing != null) {
-                    existing.sbn = notif;
-                    existing.reloadInfo();
-                    controllers.add(existing);
-                } else {
-                    MediaController controller = new MediaController(mContext, notifToken);
-                    controllers.add(new MediaNotificationController(controller, notif));
-                }
+                MediaController controller = new MediaController(mContext, notifToken);
+                controllers.add(new MediaNotificationController(controller, notif));
             }
         }
         return controllers;
@@ -228,7 +194,7 @@ public class MediaListener extends MediaController.Callback {
     public class MediaNotificationController {
 
         private final MediaController controller;
-        private StatusBarNotification sbn;
+        private final StatusBarNotification sbn;
         private MediaInfo info;
 
         private MediaNotificationController(MediaController controller, StatusBarNotification sbn) {
@@ -237,12 +203,12 @@ public class MediaListener extends MediaController.Callback {
             reloadInfo();
         }
 
-        public boolean hasInfo() {
+        private boolean hasTitle() {
             return info != null && info.title != null;
         }
 
-        public boolean isPlaying() {
-            if (!hasInfo()) return false;
+        private boolean isPlaying() {
+            if (!hasTitle()) return false;
             PlaybackState playbackState = controller.getPlaybackState();
             if (playbackState == null) return false;
             return playbackState.getState() == PlaybackState.STATE_PLAYING;

@@ -1398,8 +1398,7 @@ public class DeviceProfile {
                 mResponsiveAllAppsWidthSpec.getGutterPx(),
                 mResponsiveAllAppsHeightSpec.getGutterPx()
         );
-        allAppsCellHeightPx = Math.round(
-                mResponsiveAllAppsHeightSpec.getCellSizePx() * allAppsCellHeightMultiplier);
+        allAppsCellHeightPx = mResponsiveAllAppsHeightSpec.getCellSizePx();
         allAppsCellWidthPx = mResponsiveAllAppsWidthSpec.getCellSizePx();
 
         // This workaround is needed to align AllApps icons with Workspace icons
@@ -1454,9 +1453,7 @@ public class DeviceProfile {
                     + (allAppsBorderSpacePx.x * (numShownAllAppsColumns - 1))
                     + allAppsPadding.left + allAppsPadding.right;
             allAppsLeftRightMargin = Math.max(1, (availableWidthPx - usedWidth) / 2);
-        } else {
-            // Align with the workspace's own left/right margin (desiredWorkspaceHorizontalMarginPx)
-            // instead of the unrelated all-apps width spec, so icons line up between screens.
+        } else if (!mIsResponsiveGrid) {
             allAppsPadding.left = allAppsPadding.right =
                     Math.max(0, desiredWorkspaceHorizontalMarginPx + cellLayoutHorizontalPadding
                             - (allAppsBorderSpacePx.x / 2));

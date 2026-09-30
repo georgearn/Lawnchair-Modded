@@ -33,10 +33,7 @@ class SmartspaceViewContainer @JvmOverloads constructor(
         smartspaceView.previewMode = previewMode
         val ctx = LawnchairLauncher.instance?.launcherNullable
         val dp = ctx?.deviceProfile
-        // Match the workspace's own cell inset so the card's content lines up
-        // with the app icons in the rows below it, instead of the generic
-        // widget host padding used for arbitrary third-party widgets.
-        val leftPadding = dp?.cellLayoutPaddingPx?.left
+        val leftPadding = dp?.widgetPadding?.left
         smartspaceView.setPadding(leftPadding ?: (left + 16), top, right, bottom)
         setOnLongClickListener {
             openOptions()

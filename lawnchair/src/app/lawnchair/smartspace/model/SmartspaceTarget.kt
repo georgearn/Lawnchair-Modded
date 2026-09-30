@@ -6,7 +6,6 @@ data class SmartspaceTarget(
     val baseAction: SmartspaceAction? = null,
     val score: Float = 0f,
     val featureType: FeatureType,
-    val nowPlayingActions: NowPlayingActions? = null,
 ) {
 
     enum class FeatureType {
