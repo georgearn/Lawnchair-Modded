@@ -53,7 +53,7 @@ class NowPlayingProvider(context: Context) : SmartspaceDataSource(
                 title = title,
                 subtitle = subtitle,
                 pendingIntent = intent,
-                onClick = if (intent == null) Runnable { media.toggle(true) } else null,
+                onClick = if (intent == null) Runnable { media.toggle(false) } else null,
             ),
             score = SmartspaceScores.SCORE_MEDIA,
             featureType = SmartspaceTarget.FeatureType.FEATURE_MEDIA,

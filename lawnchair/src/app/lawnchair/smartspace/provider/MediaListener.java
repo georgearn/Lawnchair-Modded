@@ -69,21 +69,22 @@ public class MediaListener extends MediaController.Callback {
     }
 
     private void updateControllers(List<MediaNotificationController> controllers) {
+        // Controllers are reused across updates, so only touch the ones that came or went.
         for (MediaNotificationController mnc : mControllers) {
-            mnc.controller.unregisterCallback(this);
+            if (!controllers.contains(mnc)) {
+                mnc.controller.unregisterCallback(this);
+            }
         }
         for (MediaNotificationController mnc : controllers) {
-            mnc.controller.registerCallback(this);
+            if (!mControllers.contains(mnc)) {
+                mnc.controller.registerCallback(this);
+            }
         }
         mControllers = controllers;
     }
 
     private void updateTracking() {
         updateControllers(getControllers());
-
-        if (mTracking != null) {
-            mTracking.reloadInfo();
-        }
 
         // If the current controller is not playing, stop tracking it.
         if (mTracking != null
@@ -133,14 +134,30 @@ public class MediaListener extends MediaController.Callback {
         }
     }
 
+    private MediaNotificationController findController(MediaSession.Token token) {
+        for (MediaNotificationController mnc : mControllers) {
+            if (token.equals(mnc.controller.getSessionToken())) {
+                return mnc;
+            }
+        }
+        return null;
+    }
+
     private List<MediaNotificationController> getControllers() {
         List<MediaNotificationController> controllers = new ArrayList<>();
         for (StatusBarNotification notif : mNotifications) {
             Bundle extras = notif.getNotification().extras;
             MediaSession.Token notifToken = extras.getParcelable(Notification.EXTRA_MEDIA_SESSION);
             if (notifToken != null) {
-                MediaController controller = new MediaController(mContext, notifToken);
-                controllers.add(new MediaNotificationController(controller, notif));
+                MediaNotificationController existing = findController(notifToken);
+                if (existing != null) {
+                    existing.sbn = notif;
+                    existing.reloadInfo();
+                    controllers.add(existing);
+                } else {
+                    MediaController controller = new MediaController(mContext, notifToken);
+                    controllers.add(new MediaNotificationController(controller, notif));
+                }
             }
         }
         return controllers;
@@ -194,7 +211,7 @@ public class MediaListener extends MediaController.Callback {
     public class MediaNotificationController {
 
         private final MediaController controller;
-        private final StatusBarNotification sbn;
+        private StatusBarNotification sbn;
         private MediaInfo info;
 
         private MediaNotificationController(MediaController controller, StatusBarNotification sbn) {
