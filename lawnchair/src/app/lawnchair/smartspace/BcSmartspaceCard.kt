@@ -1,6 +1,10 @@
 package app.lawnchair.smartspace
 
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.res.ColorStateList
+import android.os.BatteryManager
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
@@ -11,19 +15,26 @@ import android.widget.TextView
 import androidx.core.text.layoutDirection
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.smartspace.model.SmartspaceAction
 import app.lawnchair.smartspace.model.SmartspaceTarget
 import app.lawnchair.smartspace.model.hasIntent
+import app.lawnchair.util.broadcastReceiverFlow
+import app.lawnchair.util.repeatOnAttached
 import com.android.launcher3.R
 import java.util.Locale
 import java.util.UUID
+import kotlinx.coroutines.flow.combine
 
 class BcSmartspaceCard @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : LinearLayout(context, attrs) {
 
+    private val prefs2 = PreferenceManager2.getInstance(context)
     private var baseActionIconSubtitleView: DoubleShadowTextView? = null
+    private var batteryIconView: ImageView? = null
+    private var batteryTextView: TextView? = null
     private var dateView: IcuDateTextView? = null
     private var dndImageView: ImageView? = null
     private var extrasGroup: ViewGroup? = null
@@ -49,7 +60,59 @@ class BcSmartspaceCard @JvmOverloads constructor(
             dndImageView = it.findViewById(R.id.dnd_icon)
             nextAlarmImageView = it.findViewById(R.id.alarm_icon)
             nextAlarmTextView = it.findViewById(R.id.alarm_text)
+            batteryIconView = it.findViewById(R.id.battery_icon)
+            batteryTextView = it.findViewById(R.id.battery_text)
         }
+    }
+
+    init {
+        // Only the date card (the one with the clock and date) shows the battery row.
+        repeatOnAttached {
+            if (dateView == null || batteryIconView == null || batteryTextView == null) return@repeatOnAttached
+            combine(
+                prefs2.smartspaceBatteryStatus.get(),
+                broadcastReceiverFlow(context, IntentFilter(Intent.ACTION_BATTERY_CHANGED)),
+            ) { enabled, intent -> if (enabled) intent else null }
+                .collect { updateBatteryStatus(it) }
+        }
+    }
+
+    private fun updateBatteryStatus(intent: Intent?) {
+        val iconView = batteryIconView ?: return
+        val textView = batteryTextView ?: return
+        val level = intent?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1
+        val scale = intent?.getIntExtra(BatteryManager.EXTRA_SCALE, 100) ?: 100
+        if (intent == null || level < 0 || scale <= 0) {
+            iconView.isVisible = false
+            textView.isVisible = false
+            extrasGroup?.isInvisible = true
+            return
+        }
+        val percent = context.getString(R.string.n_percent, level * 100 / scale)
+        val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
+        val charging = status == BatteryManager.BATTERY_STATUS_CHARGING
+        val full = status == BatteryManager.BATTERY_STATUS_FULL
+        val text = when {
+            charging -> context.getString(
+                R.string.smartspace_battery_status_with_state,
+                percent,
+                context.getString(R.string.smartspace_battery_charging),
+            )
+            full -> context.getString(
+                R.string.smartspace_battery_status_with_state,
+                percent,
+                context.getString(R.string.smartspace_battery_full),
+            )
+            else -> percent
+        }
+        iconView.setImageResource(
+            if (charging) R.drawable.ic_battery_status_charging else R.drawable.ic_battery_status,
+        )
+        textView.text = text
+        textView.contentDescription = text
+        iconView.isVisible = true
+        textView.isVisible = true
+        extrasGroup?.isVisible = true
     }
 
     fun setSmartspaceTarget(target: SmartspaceTarget, multipleCards: Boolean) {
@@ -124,6 +187,8 @@ class BcSmartspaceCard @JvmOverloads constructor(
         dateView?.setTextColor(textColor)
         subtitleTextView?.setTextColor(textColor)
         baseActionIconSubtitleView?.setTextColor(textColor)
+        batteryTextView?.setTextColor(textColor)
+        batteryIconView?.imageTintList = ColorStateList.valueOf(textColor)
         iconTintColor = textColor
         updateIconTint()
     }

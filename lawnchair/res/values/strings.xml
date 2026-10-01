@@ -337,6 +337,8 @@
     <!-- Battery labels -->
     <string name="smartspace_battery_charging">Charging</string>
     <string name="smartspace_battery_low">Battery low</string>
+    <string name="smartspace_battery_full">Charged</string>
+    <string name="smartspace_battery_status_with_state">%1$s · %2$s</string>
     <string name="battery_charging_percentage_charging_time">"%1$d%% — Full in %2$s"</string>
 
     <string name="smartspace_widget">At a Glance</string>
