@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.text.layoutDirection
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import app.lawnchair.preferences2.PreferenceManager2
@@ -35,6 +36,9 @@ class BcSmartspaceCard @JvmOverloads constructor(
     private var baseActionIconSubtitleView: DoubleShadowTextView? = null
     private var batteryIconView: ImageView? = null
     private var batteryTextView: TextView? = null
+    private var subtitleGroup: View? = null
+    private var batteryShown = false
+    private var subtitleEmpty = false
     private var dateView: IcuDateTextView? = null
     private var dndImageView: ImageView? = null
     private var extrasGroup: ViewGroup? = null
@@ -55,6 +59,7 @@ class BcSmartspaceCard @JvmOverloads constructor(
         subtitleTextView = findViewById(R.id.subtitle_text)
         baseActionIconSubtitleView = findViewById(R.id.base_action_icon_subtitle)
         extrasGroup = findViewById(R.id.smartspace_extras_group)
+        subtitleGroup = findViewById(R.id.smartspace_subtitle_group)
         topPadding = paddingTop
         extrasGroup?.let {
             dndImageView = it.findViewById(R.id.dnd_icon)
@@ -77,6 +82,11 @@ class BcSmartspaceCard @JvmOverloads constructor(
         }
     }
 
+    // With no weather line, close the empty subtitle gap so the battery sits right under the date.
+    private fun refreshSubtitleGroup() {
+        subtitleGroup?.isGone = dateView != null && batteryShown && subtitleEmpty
+    }
+
     private fun updateBatteryStatus(intent: Intent?) {
         val iconView = batteryIconView ?: return
         val textView = batteryTextView ?: return
@@ -86,6 +96,8 @@ class BcSmartspaceCard @JvmOverloads constructor(
             iconView.isVisible = false
             textView.isVisible = false
             extrasGroup?.isInvisible = true
+            batteryShown = false
+            refreshSubtitleGroup()
             return
         }
         val percent = context.getString(R.string.n_percent, level * 100 / scale)
@@ -113,6 +125,8 @@ class BcSmartspaceCard @JvmOverloads constructor(
         iconView.isVisible = true
         textView.isVisible = true
         extrasGroup?.isVisible = true
+        batteryShown = true
+        refreshSubtitleGroup()
     }
 
     fun setSmartspaceTarget(target: SmartspaceTarget, multipleCards: Boolean) {
@@ -141,6 +155,10 @@ class BcSmartspaceCard @JvmOverloads constructor(
             setSubtitle(subtitle, headerAction.contentDescription)
             updateIconTint()
         }
+
+        subtitleEmpty = subtitleTextView?.text.isNullOrEmpty() &&
+            baseActionIconSubtitleView?.text.isNullOrEmpty() && baseAction == null
+        refreshSubtitleGroup()
 
         if (baseAction != null && baseActionIconSubtitleView != null) {
             val icon = BcSmartSpaceUtil.getIconDrawable(baseAction.icon, context)
