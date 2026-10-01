@@ -86,6 +86,10 @@ public final class FeatureFlags {
         PreferenceManager2 preferenceManager2 = PreferenceManager2.getInstance(context);
         return PreferenceExtensionsKt.firstBlocking(preferenceManager2.getTwoLineAllApps());
     }
+    public static boolean twoLineHomeScreen(Context context) {
+        PreferenceManager2 preferenceManager2 = PreferenceManager2.getInstance(context);
+        return PreferenceExtensionsKt.firstBlocking(preferenceManager2.getTwoLineHomeScreen());
+    }
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.
      * <p>

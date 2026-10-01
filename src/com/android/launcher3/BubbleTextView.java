@@ -119,6 +119,7 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
     private float mScaleForReorderBounce = 1f;
 
     private IntArray mBreakPointsIntArray;
+    private boolean mTwoLineHome;
     private CharSequence mLastOriginalText;
     private CharSequence mLastModifiedText;
 
@@ -211,6 +212,7 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
         DeviceProfile grid = mActivity.getDeviceProfile();
 
         mDisplay = a.getInteger(R.styleable.BubbleTextView_iconDisplay, DISPLAY_WORKSPACE);
+        mTwoLineHome = mDisplay == DISPLAY_WORKSPACE && FeatureFlags.twoLineHomeScreen(context);
         final int defaultIconSize;
         if (mDisplay == DISPLAY_WORKSPACE) {
             setTextSize(TypedValue.COMPLEX_UNIT_PX, grid.iconTextSizePx);
@@ -280,6 +282,7 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
         mForceHideDot = false;
         setBackground(null);
         if (FeatureFlags.twoLineAllApps(this.getContext())
+                || mTwoLineHome
                 || FeatureFlags.ENABLE_TWOLINE_DEVICESEARCH.get()) {
             setMaxLines(1);
         }
@@ -411,6 +414,7 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
      */
     protected boolean shouldUseTwoLine() {
         return  (FeatureFlags.twoLineAllApps(this.getContext()) && mDisplay == DISPLAY_ALL_APPS)
+                || mTwoLineHome
                 || (FeatureFlags.ENABLE_TWOLINE_DEVICESEARCH.get()
                 && mDisplay == DISPLAY_SEARCH_RESULT);
     }
@@ -698,8 +702,9 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (mCenterVertically) {
             Paint.FontMetrics fm = getPaint().getFontMetrics();
+            int textLines = mTwoLineHome ? 2 : 1;
             int cellHeightPx = mIconSize + getCompoundDrawablePadding() +
-                    (int) Math.ceil(fm.bottom - fm.top);
+                    textLines * (int) Math.ceil(fm.bottom - fm.top);
             int height = MeasureSpec.getSize(heightMeasureSpec);
             setPadding(getPaddingLeft(), (height - cellHeightPx) / 2, getPaddingRight(),
                     getPaddingBottom());

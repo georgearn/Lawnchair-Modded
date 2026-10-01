@@ -492,6 +492,12 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         onSet = { reloadHelper.recreate() },
     )
 
+    val twoLineHomeScreen = preference(
+        key = booleanPreferencesKey(name = "two_line_home_screen"),
+        defaultValue = false,
+        onSet = { reloadHelper.recreate() },
+    )
+
     val enableFeed = preference(
         key = booleanPreferencesKey(name = "enable_feed"),
         defaultValue = context.resources.getBoolean(R.bool.config_default_enable_feed),

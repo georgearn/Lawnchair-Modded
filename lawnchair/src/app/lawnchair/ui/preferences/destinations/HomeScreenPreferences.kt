@@ -183,6 +183,10 @@ fun HomeScreenPreferences(
                     valueRange = 0.5F..1.5F,
                     showAsPercentage = true,
                 )
+                SwitchPreference(
+                    adapter = prefs2.twoLineHomeScreen.getAdapter(),
+                    label = stringResource(id = R.string.twoline_label),
+                )
             }
         }
         val overrideRepo = IconOverrideRepository.INSTANCE.get(LocalContext.current)
