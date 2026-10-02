@@ -560,6 +560,11 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         defaultValue = true,
     )
 
+    val smartspaceBluetoothBattery = preference(
+        key = booleanPreferencesKey("enable_smartspace_bluetooth_battery"),
+        defaultValue = false,
+    )
+
     val smartspaceNowPlaying = preference(
         key = booleanPreferencesKey("enable_smartspace_now_playing"),
         defaultValue = true,

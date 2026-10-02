@@ -357,6 +357,10 @@
     <!-- Available targets -->
     <string name="smartspace_weather">Weather</string>
     <string name="smartspace_battery_status">Battery status</string>
+    <string name="smartspace_bluetooth_battery">Bluetooth device battery</string>
+    <string name="bluetooth_battery_left">L %1$d%%</string>
+    <string name="bluetooth_battery_right">R %1$d%%</string>
+    <string name="bluetooth_battery_case">Case %1$d%%</string>
     <string name="smartspace_now_playing">Now Playing</string>
 
     <!-- Smartspacer strings -->

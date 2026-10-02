@@ -20,6 +20,7 @@ class SmartspaceProvider private constructor(context: Context) {
     val dataSources = listOf(
         SmartspaceWidgetReader(context),
         BatteryStatusProvider(context),
+        BluetoothBatteryProvider(context),
         NowPlayingProvider(context),
     )
 
