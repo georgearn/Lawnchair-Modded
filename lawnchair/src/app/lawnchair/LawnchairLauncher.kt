@@ -55,7 +55,6 @@ import com.android.launcher3.popup.SystemShortcut
 import com.android.launcher3.statemanager.StateManager
 import com.android.launcher3.uioverrides.QuickstepLauncher
 import com.android.launcher3.uioverrides.states.AllAppsState
-import com.android.launcher3.uioverrides.states.OverviewState
 import com.android.launcher3.util.ActivityOptionsWrapper
 import com.android.launcher3.util.Executors
 import com.android.launcher3.util.RunnableList
@@ -85,12 +84,13 @@ class LawnchairLauncher : QuickstepLauncher() {
     private val themeProvider by unsafeLazy { ThemeProvider.INSTANCE.get(this) }
     private val noStatusBarStateListener = object : StateManager.StateListener<LauncherState> {
         override fun onStateTransitionStart(toState: LauncherState) {
-            if (toState is OverviewState) {
+            // Only the home screen itself hides the status bar.
+            if (toState != LauncherState.NORMAL) {
                 insetsController.show(WindowInsetsCompat.Type.statusBars())
             }
         }
         override fun onStateTransitionComplete(finalState: LauncherState) {
-            if (finalState !is OverviewState) {
+            if (finalState == LauncherState.NORMAL) {
                 insetsController.hide(WindowInsetsCompat.Type.statusBars())
             }
         }
@@ -129,7 +129,7 @@ class LawnchairLauncher : QuickstepLauncher() {
 
         preferenceManager2.showStatusBar.get().distinctUntilChanged().onEach {
             with(insetsController) {
-                if (it) {
+                if (it || !launcher.stateManager.isInState(LauncherState.NORMAL)) {
                     show(WindowInsetsCompat.Type.statusBars())
                 } else {
                     hide(WindowInsetsCompat.Type.statusBars())
