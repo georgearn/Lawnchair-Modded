@@ -6,20 +6,20 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.content.Context
-import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.drawable.Icon
-import android.net.Uri
 import android.os.Build
-import android.provider.Settings
+import androidx.activity.ComponentActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.getSystemService
-import app.lawnchair.BlankActivity
 import app.lawnchair.smartspace.model.SmartspaceAction
 import app.lawnchair.smartspace.model.SmartspaceScores
 import app.lawnchair.smartspace.model.SmartspaceTarget
 import app.lawnchair.util.broadcastReceiverFlow
 import com.android.launcher3.R
+import java.util.UUID
+import kotlin.coroutines.resume
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.suspendCancellableCoroutine
 
 /**
  * Shows the battery of connected Bluetooth devices as its own smartspace card. Earbuds that report
@@ -72,7 +73,7 @@ class BluetoothBatteryProvider(context: Context) : SmartspaceDataSource(
             adapter.bondedDevices.orEmpty()
                 .filter { it.isConnectedCompat() }
                 .mapNotNull { it.readBattery() }
-        } catch (e: SecurityException) {
+        } catch (e: Exception) {
             emptyList()
         }
     }
@@ -120,15 +121,17 @@ class BluetoothBatteryProvider(context: Context) : SmartspaceDataSource(
     override suspend fun requiresSetup(): Boolean = !hasPermission()
 
     override suspend fun startSetup(activity: Activity) {
-        // The system permission dialog, built by the platform so it targets the right package.
-        val request = runCatching {
-            PackageManager::class.java
-                .getMethod("buildRequestPermissionsIntent", Array<String>::class.java)
-                .invoke(activity.packageManager, arrayOf(Manifest.permission.BLUETOOTH_CONNECT)) as Intent
-        }.getOrNull()
-        val intent = request
-            ?: Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", activity.packageName, null))
-        BlankActivity.startBlankActivityForResult(activity, intent)
+        val registry = (activity as? ComponentActivity)?.activityResultRegistry ?: return
+        suspendCancellableCoroutine { continuation ->
+            val launcher = registry.register(
+                "bluetooth_battery_permission_${UUID.randomUUID()}",
+                ActivityResultContracts.RequestPermission(),
+            ) {
+                if (continuation.isActive) continuation.resume(Unit)
+            }
+            continuation.invokeOnCancellation { launcher.unregister() }
+            launcher.launch(Manifest.permission.BLUETOOTH_CONNECT)
+        }
     }
 
     private data class DeviceBattery(
