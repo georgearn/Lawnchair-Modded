@@ -124,7 +124,10 @@ final def versionString = "14.0.0"
 final def versionDisplayName = "${versionString} (${buildCommit})"
 final def parts = versionString.split("\\.")
 final def majorVersion = parts[0]
-final def versionInt = parts[0].toInteger() * 1000000 + parts[1].toInteger() * 10000 + parts[2].toInteger() * 100
+// CI adds its run number so every build has a higher versionCode. Without it, a system app
+// updated in place (e.g. by a Magisk module) keeps stale package info such as permissions.
+final def buildNumber = (System.getenv("GITHUB_RUN_NUMBER") ?: "0").toInteger()
+final def versionInt = parts[0].toInteger() * 1000000 + parts[1].toInteger() * 10000 + parts[2].toInteger() * 100 + buildNumber
 
 final def quickstepMinSdk = "29"
 final def quickstepMaxSdk = "34"
