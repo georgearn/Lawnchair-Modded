@@ -129,7 +129,7 @@ class LawnchairLauncher : QuickstepLauncher() {
 
         preferenceManager2.showStatusBar.get().distinctUntilChanged().onEach {
             with(insetsController) {
-                if (it || !launcher.stateManager.isInState(LauncherState.NORMAL)) {
+                if (it || !isInState(LauncherState.NORMAL)) {
                     show(WindowInsetsCompat.Type.statusBars())
                 } else {
                     hide(WindowInsetsCompat.Type.statusBars())
