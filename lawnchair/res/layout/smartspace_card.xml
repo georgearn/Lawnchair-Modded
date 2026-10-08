@@ -21,25 +21,31 @@
 
         <ImageButton
             android:id="@+id/media_previous"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/media_button_ripple"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/smartspace_media_previous"
             android:src="@drawable/ic_media_previous" />
 
         <ImageButton
             android:id="@+id/media_play_pause"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/media_button_ripple"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/smartspace_media_play_pause"
             android:src="@drawable/ic_media_play" />
 
         <ImageButton
             android:id="@+id/media_next"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/media_button_ripple"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/smartspace_media_next"
             android:src="@drawable/ic_media_next" />
     </LinearLayout>

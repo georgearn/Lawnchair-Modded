@@ -5,11 +5,9 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import app.lawnchair.smartspace.model.SmartspaceAction
 import app.lawnchair.smartspace.model.SmartspaceScores
 import app.lawnchair.smartspace.model.SmartspaceTarget
@@ -26,16 +24,6 @@ class PowerampProvider(context: Context) : SmartspaceDataSource(
     R.string.smartspace_poweramp,
     { smartspacePoweramp },
 ) {
-
-    // Poweramp's own launcher icon, falling back to a generic note.
-    private val icon: Icon by lazy {
-        try {
-            val drawable = context.packageManager.getApplicationIcon(POWERAMP_PACKAGE)
-            Icon.createWithBitmap(drawable.toBitmap())
-        } catch (_: Exception) {
-            Icon.createWithResource(context, R.drawable.ic_music_note)
-        }
-    }
 
     override val isAvailable: Boolean = isPowerampInstalled(context)
 
@@ -120,7 +108,6 @@ class PowerampProvider(context: Context) : SmartspaceDataSource(
             id = "poweramp-${title.hashCode()}-${artist.hashCode()}",
             headerAction = SmartspaceAction(
                 id = "powerampAction-${title.hashCode()}",
-                icon = icon,
                 title = title,
                 subtitle = subtitle,
                 intent = intent,
