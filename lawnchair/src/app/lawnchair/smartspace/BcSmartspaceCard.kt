@@ -228,6 +228,7 @@ class BcSmartspaceCard @JvmOverloads constructor(
         val tint = ColorStateList.valueOf(iconTintColor)
         mediaPreviousButton?.imageTintList = tint
         mediaPlayPauseButton?.imageTintList = tint
+        mediaPlayPauseButton?.foregroundTintList = tint
         mediaNextButton?.imageTintList = tint
     }
 
