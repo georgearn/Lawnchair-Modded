@@ -6,6 +6,7 @@ import android.content.IntentFilter
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.BatteryManager
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -231,11 +232,14 @@ class BcSmartspaceCard @JvmOverloads constructor(
         val tint = ColorStateList.valueOf(iconTintColor)
         mediaPreviousButton?.imageTintList = tint
         mediaPlayPauseButton?.imageTintList = tint
-        mediaPlayPauseButton?.foreground = GradientDrawable().apply {
+        val density = resources.displayMetrics.density
+        val ring = GradientDrawable().apply {
             shape = GradientDrawable.OVAL
             setColor(Color.TRANSPARENT)
-            setStroke((resources.displayMetrics.density * 1.5f).roundToInt(), iconTintColor)
+            setStroke((density * 1.5f).roundToInt(), iconTintColor)
         }
+        // Inset so the ring reads slightly smaller than the 38dp touch target.
+        mediaPlayPauseButton?.foreground = InsetDrawable(ring, (density * 1f).roundToInt())
         mediaNextButton?.imageTintList = tint
     }
 
