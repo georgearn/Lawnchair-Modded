@@ -570,6 +570,11 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         defaultValue = true,
     )
 
+    val smartspacePoweramp = preference(
+        key = booleanPreferencesKey("enable_smartspace_poweramp"),
+        defaultValue = true,
+    )
+
     val smartspaceShowDate = preference(
         key = booleanPreferencesKey("smartspace_show_date"),
         defaultValue = context.resources.getBoolean(R.bool.config_default_smartspace_show_date),

@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.drawable.Icon
 import app.lawnchair.BlankActivity
 import app.lawnchair.getAppName
+import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.smartspace.model.SmartspaceAction
 import app.lawnchair.smartspace.model.SmartspaceScores
 import app.lawnchair.smartspace.model.SmartspaceTarget
@@ -15,6 +16,7 @@ import app.lawnchair.ui.preferences.navigation.Routes
 import com.android.launcher3.R
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 
 class NowPlayingProvider(context: Context) : SmartspaceDataSource(
@@ -25,16 +27,25 @@ class NowPlayingProvider(context: Context) : SmartspaceDataSource(
 
     private val defaultIcon = Icon.createWithResource(context, R.drawable.ic_music_note)
 
-    override val internalTargets = callbackFlow {
-        val mediaListener = MediaListener(context) {
-            trySend(listOfNotNull(getSmartspaceTarget(it)))
-        }
+    private val powerampEnabled = PreferenceManager2.getInstance(context).smartspacePoweramp.get()
+
+    private val mediaFlow = callbackFlow {
+        val mediaListener = MediaListener(context) { trySend(it) }
         mediaListener.onResume()
         awaitClose { mediaListener.onPause() }
     }
 
-    private fun getSmartspaceTarget(media: MediaListener): SmartspaceTarget? {
+    override val internalTargets = combine(mediaFlow, powerampEnabled) { media, powerampEnabled ->
+        // PowerampProvider handles Poweramp through its own API, avoid showing it twice.
+        val skipPackage = PowerampProvider.POWERAMP_PACKAGE.takeIf {
+            powerampEnabled && PowerampProvider.isPowerampInstalled(context)
+        }
+        listOfNotNull(getSmartspaceTarget(media, skipPackage))
+    }
+
+    private fun getSmartspaceTarget(media: MediaListener, skipPackage: String?): SmartspaceTarget? {
         val tracking = media.tracking ?: return null
+        if (tracking.packageName == skipPackage) return null
         val title = tracking.info.title ?: return null
 
         val sbn = tracking.sbn

@@ -362,6 +362,7 @@
     <string name="bluetooth_battery_right">R %1$d%%</string>
     <string name="bluetooth_battery_case">Case %1$d%%</string>
     <string name="smartspace_now_playing">Now Playing</string>
+    <string name="smartspace_poweramp">Poweramp</string>
 
     <!-- Smartspacer strings -->
     <string name="maximum_number_of_targets">Maximum number of targets</string>
