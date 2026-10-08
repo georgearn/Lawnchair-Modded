@@ -21,10 +21,10 @@
 
         <ImageButton
             android:id="@+id/media_previous"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:background="@drawable/media_button_ripple"
-            android:padding="10dp"
+            android:padding="9dp"
             android:scaleType="fitCenter"
             android:contentDescription="@string/smartspace_media_previous"
             android:src="@drawable/ic_media_previous" />
@@ -32,20 +32,20 @@
         <ImageButton
             android:id="@+id/media_play_pause"
             android:foreground="@drawable/media_button_ring"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:background="@drawable/media_button_ripple"
-            android:padding="12dp"
+            android:padding="10dp"
             android:scaleType="fitCenter"
             android:contentDescription="@string/smartspace_media_play_pause"
             android:src="@drawable/ic_media_play" />
 
         <ImageButton
             android:id="@+id/media_next"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:background="@drawable/media_button_ripple"
-            android:padding="10dp"
+            android:padding="9dp"
             android:scaleType="fitCenter"
             android:contentDescription="@string/smartspace_media_next"
             android:src="@drawable/ic_media_next" />
