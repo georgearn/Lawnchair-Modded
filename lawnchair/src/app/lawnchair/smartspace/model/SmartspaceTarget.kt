@@ -5,8 +5,17 @@ data class SmartspaceTarget(
     val headerAction: SmartspaceAction? = null,
     val baseAction: SmartspaceAction? = null,
     val score: Float = 0f,
+    val mediaControls: MediaControls? = null,
     val featureType: FeatureType,
 ) {
+
+    /** Transport buttons shown on the card. [isPlaying] picks the play/pause icon. */
+    data class MediaControls(
+        val isPlaying: Boolean,
+        val onPrevious: Runnable,
+        val onPlayPause: Runnable,
+        val onNext: Runnable,
+    )
 
     enum class FeatureType {
         FEATURE_UNDEFINED,

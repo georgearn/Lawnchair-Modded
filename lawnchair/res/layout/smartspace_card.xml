@@ -10,4 +10,37 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3" />
+
+    <LinearLayout
+        android:id="@+id/media_controls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/media_previous"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/smartspace_media_previous"
+            android:src="@drawable/ic_media_previous" />
+
+        <ImageButton
+            android:id="@+id/media_play_pause"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/smartspace_media_play_pause"
+            android:src="@drawable/ic_media_play" />
+
+        <ImageButton
+            android:id="@+id/media_next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/smartspace_media_next"
+            android:src="@drawable/ic_media_next" />
+    </LinearLayout>
 </app.lawnchair.smartspace.BcSmartspaceCard>

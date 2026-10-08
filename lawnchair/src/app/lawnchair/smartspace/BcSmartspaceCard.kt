@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -49,6 +50,10 @@ class BcSmartspaceCard @JvmOverloads constructor(
     private var subtitleTextView: TextView? = null
     private lateinit var target: SmartspaceTarget
     private var titleTextView: TextView? = null
+    private var mediaControlsGroup: View? = null
+    private var mediaPreviousButton: ImageButton? = null
+    private var mediaPlayPauseButton: ImageButton? = null
+    private var mediaNextButton: ImageButton? = null
     private var topPadding = 0
     private var usePageIndicatorUi = false
 
@@ -60,6 +65,10 @@ class BcSmartspaceCard @JvmOverloads constructor(
         baseActionIconSubtitleView = findViewById(R.id.base_action_icon_subtitle)
         extrasGroup = findViewById(R.id.smartspace_extras_group)
         subtitleGroup = findViewById(R.id.smartspace_subtitle_group)
+        mediaControlsGroup = findViewById(R.id.media_controls)
+        mediaPreviousButton = findViewById(R.id.media_previous)
+        mediaPlayPauseButton = findViewById(R.id.media_play_pause)
+        mediaNextButton = findViewById(R.id.media_next)
         topPadding = paddingTop
         extrasGroup?.let {
             dndImageView = it.findViewById(R.id.dnd_icon)
@@ -178,6 +187,8 @@ class BcSmartspaceCard @JvmOverloads constructor(
             }
         }
 
+        updateMediaControls(target.mediaControls)
+
         dateView?.let {
             val calendarAction = SmartspaceAction(
                 id = headerAction?.id ?: baseAction?.id ?: UUID.randomUUID().toString(),
@@ -200,6 +211,26 @@ class BcSmartspaceCard @JvmOverloads constructor(
         }
     }
 
+    private fun updateMediaControls(controls: SmartspaceTarget.MediaControls?) {
+        val group = mediaControlsGroup ?: return
+        group.isVisible = controls != null
+        if (controls == null) return
+        mediaPlayPauseButton?.setImageResource(
+            if (controls.isPlaying) R.drawable.ic_media_pause else R.drawable.ic_media_play,
+        )
+        mediaPreviousButton?.setOnClickListener { controls.onPrevious.run() }
+        mediaPlayPauseButton?.setOnClickListener { controls.onPlayPause.run() }
+        mediaNextButton?.setOnClickListener { controls.onNext.run() }
+        updateMediaControlsTint()
+    }
+
+    private fun updateMediaControlsTint() {
+        val tint = ColorStateList.valueOf(iconTintColor)
+        mediaPreviousButton?.imageTintList = tint
+        mediaPlayPauseButton?.imageTintList = tint
+        mediaNextButton?.imageTintList = tint
+    }
+
     fun setPrimaryTextColor(textColor: Int) {
         titleTextView?.setTextColor(textColor)
         dateView?.setTextColor(textColor)
@@ -209,6 +240,7 @@ class BcSmartspaceCard @JvmOverloads constructor(
         batteryIconView?.imageTintList = ColorStateList.valueOf(textColor)
         iconTintColor = textColor
         updateIconTint()
+        updateMediaControlsTint()
     }
 
     fun setTitle(title: CharSequence?, contentDescription: CharSequence?, hasIcon: Boolean) {
