@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.BatteryManager
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -26,6 +28,7 @@ import app.lawnchair.util.repeatOnAttached
 import com.android.launcher3.R
 import java.util.Locale
 import java.util.UUID
+import kotlin.math.roundToInt
 import kotlinx.coroutines.flow.combine
 
 class BcSmartspaceCard @JvmOverloads constructor(
@@ -228,7 +231,11 @@ class BcSmartspaceCard @JvmOverloads constructor(
         val tint = ColorStateList.valueOf(iconTintColor)
         mediaPreviousButton?.imageTintList = tint
         mediaPlayPauseButton?.imageTintList = tint
-        mediaPlayPauseButton?.foregroundTintList = tint
+        mediaPlayPauseButton?.foreground = GradientDrawable().apply {
+            shape = GradientDrawable.OVAL
+            setColor(Color.TRANSPARENT)
+            setStroke((resources.displayMetrics.density * 1.5f).roundToInt(), iconTintColor)
+        }
         mediaNextButton?.imageTintList = tint
     }
 
