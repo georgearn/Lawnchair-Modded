@@ -117,7 +117,35 @@ private fun LawnchairSmartspaceSettings(
                     }
                 }
         }
+        SmartspaceAppearancePreferences()
         SmartspaceDateAndTimePreferences()
+    }
+}
+
+@Composable
+fun SmartspaceAppearancePreferences(
+    modifier: Modifier = Modifier,
+) {
+    val preferenceManager2 = preferenceManager2()
+    val backgroundAdapter = preferenceManager2.smartspaceBackground.getAdapter()
+
+    PreferenceGroup(
+        heading = stringResource(id = R.string.smartspace_appearance),
+        modifier = modifier.padding(top = 8.dp),
+    ) {
+        SwitchPreference(
+            adapter = backgroundAdapter,
+            label = stringResource(id = R.string.smartspace_background),
+        )
+        ExpandAndShrink(visible = backgroundAdapter.state.value) {
+            SliderPreference(
+                label = stringResource(id = R.string.smartspace_background_opacity),
+                adapter = preferenceManager2.smartspaceBackgroundOpacity.getAdapter(),
+                valueRange = 0f..1f,
+                step = 0.05f,
+                showAsPercentage = true,
+            )
+        }
     }
 }
 

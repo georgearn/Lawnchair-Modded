@@ -362,6 +362,9 @@
     <string name="bluetooth_battery_right">R %1$d%%</string>
     <string name="bluetooth_battery_case">Case %1$d%%</string>
     <string name="smartspace_now_playing">Now Playing</string>
+    <string name="smartspace_background">Pill background</string>
+    <string name="smartspace_background_opacity">Background opacity</string>
+    <string name="smartspace_appearance">Appearance</string>
     <string name="smartspace_poweramp">Poweramp</string>
     <string name="smartspace_media_previous">Previous track</string>
     <string name="smartspace_media_play_pause">Play or pause</string>

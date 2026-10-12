@@ -5,18 +5,24 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.View
 import android.view.View.MeasureSpec.EXACTLY
 import android.view.View.MeasureSpec.makeMeasureSpec
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.core.graphics.ColorUtils
 import androidx.viewpager.widget.ViewPager
+import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.smartspace.model.SmartspaceTarget
 import app.lawnchair.smartspace.provider.SmartspaceProvider
 import app.lawnchair.util.repeatOnAttached
 import com.android.launcher3.R
+import com.android.launcher3.util.Themes
 import kotlin.math.roundToInt
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -65,12 +71,43 @@ class BcSmartspaceView @JvmOverloads constructor(
         })
 
         val targets = if (previewMode) provider.previewTargets else provider.targets
+        val prefs2 = PreferenceManager2.getInstance(context)
         repeatOnAttached {
+            combine(
+                prefs2.smartspaceBackground.get(),
+                prefs2.smartspaceBackgroundOpacity.get(),
+                ::Pair,
+            )
+                .onEach { (enabled, opacity) -> updateBackground(enabled, opacity) }
+                .launchIn(this)
             viewPager.adapter = adapter
             targets
                 .onEach(::onSmartspaceTargetsUpdate)
                 .launchIn(this)
         }
+    }
+
+    private fun updateBackground(enabled: Boolean, opacity: Float) {
+        val density = resources.displayMetrics.density
+        if (!enabled) {
+            viewPager.background = null
+            viewPager.setPaddingRelative(0, 0, 0, 0)
+            indicator.translationX = 0f
+            return
+        }
+        // Pill is the opposite shade of the text so it stays readable on any wallpaper.
+        val textColor = Themes.getAttrColor(context, R.attr.workspaceTextColor)
+        val base = if (ColorUtils.calculateLuminance(textColor) > 0.5) Color.BLACK else Color.WHITE
+        val color = ColorUtils.setAlphaComponent(base, (opacity.coerceIn(0f, 1f) * 255).roundToInt())
+        viewPager.background = GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            // Larger than half the height, so the corners are clamped to a full pill.
+            cornerRadius = 100f * density
+            setColor(color)
+        }
+        // Keep content inside the pill's curved ends (the pager clips pages to its padding).
+        viewPager.setPaddingRelative((28 * density).roundToInt(), 0, (20 * density).roundToInt(), 0)
+        indicator.translationX = 32 * density
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
