@@ -60,6 +60,13 @@ fun AppDrawerPreferences(
                 valueRange = 0F..1F,
                 showAsPercentage = true,
             )
+            SliderPreference(
+                label = stringResource(id = R.string.search_bar_opacity),
+                adapter = prefs2.appDrawerSearchBarOpacity.getAdapter(),
+                step = 0.1f,
+                valueRange = 0F..1F,
+                showAsPercentage = true,
+            )
             SwitchPreference(
                 label = stringResource(id = R.string.pref_all_apps_bulk_icon_loading_title),
                 description = stringResource(id = R.string.pref_all_apps_bulk_icon_loading_description),

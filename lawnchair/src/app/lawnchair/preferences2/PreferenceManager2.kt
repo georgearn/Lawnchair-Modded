@@ -272,6 +272,11 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         onSet = { reloadHelper.recreate() },
     )
 
+    val appDrawerSearchBarOpacity = preference(
+        key = floatPreferencesKey(name = "app_drawer_search_bar_opacity"),
+        defaultValue = 1f,
+    )
+
     val showHiddenAppsInSearch = preference(
         key = booleanPreferencesKey(name = "show_hidden_apps_in_search"),
         defaultValue = false,

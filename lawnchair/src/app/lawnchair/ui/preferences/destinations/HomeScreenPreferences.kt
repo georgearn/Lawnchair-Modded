@@ -176,17 +176,19 @@ fun HomeScreenPreferences(
                 label = stringResource(id = R.string.show_labels),
             )
             ExpandAndShrink(visible = homeScreenLabelsAdapter.state.value) {
-                SliderPreference(
-                    label = stringResource(id = R.string.label_size),
-                    adapter = prefs2.homeIconLabelSizeFactor.getAdapter(),
-                    step = 0.1f,
-                    valueRange = 0.5F..1.5F,
-                    showAsPercentage = true,
-                )
-                SwitchPreference(
-                    adapter = prefs2.twoLineHomeScreen.getAdapter(),
-                    label = stringResource(id = R.string.twoline_label),
-                )
+                DividerColumn {
+                    SliderPreference(
+                        label = stringResource(id = R.string.label_size),
+                        adapter = prefs2.homeIconLabelSizeFactor.getAdapter(),
+                        step = 0.1f,
+                        valueRange = 0.5F..1.5F,
+                        showAsPercentage = true,
+                    )
+                    SwitchPreference(
+                        adapter = prefs2.twoLineHomeScreen.getAdapter(),
+                        label = stringResource(id = R.string.twoline_label),
+                    )
+                }
             }
         }
         val overrideRepo = IconOverrideRepository.INSTANCE.get(LocalContext.current)

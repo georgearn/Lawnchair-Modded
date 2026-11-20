@@ -89,6 +89,7 @@ class AllAppsSearchInput(context: Context, attrs: AttributeSet?) :
     private val bgAlphaAnimator = ValueAnimator.ofFloat(0f, 1f).apply { duration = 300 }
     private var bgVisible = true
     private var bgAlpha = 1f
+    private var bgOpacity = 1f
     private val suggestionsRecent = SearchRecentSuggestions(launcher, LawnchairRecentSuggestionProvider.AUTHORITY, LawnchairRecentSuggestionProvider.MODE)
     private val prefs = PreferenceManager.getInstance(launcher)
     private val prefs2 = PreferenceManager2.getInstance(launcher)
@@ -99,6 +100,11 @@ class AllAppsSearchInput(context: Context, attrs: AttributeSet?) :
         val wrapper = ViewCompat.requireViewById<View>(this, R.id.search_wrapper)
         wrapper.background = bg
         bgAlphaAnimator.addUpdateListener { updateBgAlpha() }
+
+        prefs2.appDrawerSearchBarOpacity.subscribeBlocking(scope = viewAttachedScope) { opacity ->
+            bgOpacity = opacity
+            updateBgAlpha()
+        }
 
         hint = ViewCompat.requireViewById(this, R.id.hint)
 
@@ -355,6 +361,6 @@ class AllAppsSearchInput(context: Context, attrs: AttributeSet?) :
 
     private fun updateBgAlpha() {
         val fraction = bgAlphaAnimator.animatedFraction
-        bg.alpha = (Utilities.mapRange(fraction, 0f, bgAlpha) * 255).toInt()
+        bg.alpha = (Utilities.mapRange(fraction, 0f, bgAlpha) * bgOpacity * 255).toInt()
     }
 }

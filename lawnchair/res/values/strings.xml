@@ -75,6 +75,7 @@
     <!-- Generic styling options -->
     <string name="wallpaper">Wallpaper</string>
     <string name="background_opacity">Background opacity</string>
+    <string name="search_bar_opacity">Search bar opacity</string>
 
     <!-- Toast text and tips -->
     <string name="copied_toast">Copied to clipboard</string>
