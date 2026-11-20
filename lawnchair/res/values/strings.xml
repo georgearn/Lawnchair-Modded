@@ -374,9 +374,6 @@
     <string name="smartspace_media_next">Next track</string>
     <string name="music_widget_label">Music player</string>
     <string name="music_widget_description">Current Poweramp track with previous, play/pause and next buttons</string>
-    <string name="music_widget_nothing_playing">Nothing playing</string>
-    <string name="music_widget_tap_to_open">Tap to open Poweramp</string>
-    <string name="music_widget_not_installed">Poweramp not installed</string>
 
     <!-- Smartspacer strings -->
     <string name="maximum_number_of_targets">Maximum number of targets</string>

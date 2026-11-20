@@ -134,20 +134,15 @@ object MusicWidgetController {
         val hasTrack = installed && !stopped && !title.isNullOrEmpty()
         applyColors(context, views)
 
-        when {
-            !installed -> {
-                views.setTextViewText(R.id.music_title, context.getString(R.string.music_widget_not_installed))
-                views.setTextViewText(R.id.music_artist, "")
-            }
-            !hasTrack -> {
-                views.setTextViewText(R.id.music_title, context.getString(R.string.music_widget_nothing_playing))
-                views.setTextViewText(R.id.music_artist, context.getString(R.string.music_widget_tap_to_open))
-            }
-            else -> {
-                views.setTextViewText(R.id.music_title, title)
-                views.setTextViewText(R.id.music_artist, artist.orEmpty())
-            }
+        // Nothing to show: leave the widget empty instead of a placeholder card.
+        views.setViewVisibility(R.id.music_content, if (hasTrack) View.VISIBLE else View.GONE)
+        if (!hasTrack) {
+            views.setViewVisibility(R.id.music_background, View.GONE)
+            views.setOnClickPendingIntent(R.id.music_root, null)
+            return views
         }
+        views.setTextViewText(R.id.music_title, title)
+        views.setTextViewText(R.id.music_artist, artist.orEmpty())
 
         views.setImageViewResource(
             R.id.music_play_pause,
@@ -176,6 +171,11 @@ object MusicWidgetController {
             views.setInt(it, "setColorFilter", textColor)
         }
         views.setViewVisibility(R.id.music_background, if (backgroundEnabled) View.VISIBLE else View.GONE)
+        // Without the pill the text lines up with the rest of the home screen.
+        val density = context.resources.displayMetrics.density
+        val start = if (backgroundEnabled) (24 * density).roundToInt() else 0
+        val end = if (backgroundEnabled) (14 * density).roundToInt() else 0
+        views.setViewPadding(R.id.music_content, start, 0, end, 0)
         if (backgroundEnabled) {
             val base = if (ColorUtils.calculateLuminance(textColor) > 0.5) Color.BLACK else Color.WHITE
             views.setInt(R.id.music_background, "setColorFilter", base)
