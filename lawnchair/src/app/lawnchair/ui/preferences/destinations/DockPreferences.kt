@@ -109,6 +109,22 @@ fun DockPreferences(
                     }
                 }
             }
+            PreferenceGroup(heading = stringResource(id = R.string.dock_background_heading)) {
+                val dockBackgroundAdapter = prefs2.dockBackground.getAdapter()
+                SwitchPreference(
+                    adapter = dockBackgroundAdapter,
+                    label = stringResource(id = R.string.dock_background),
+                )
+                ExpandAndShrink(visible = dockBackgroundAdapter.state.value) {
+                    SliderPreference(
+                        label = stringResource(id = R.string.dock_background_opacity),
+                        adapter = prefs2.dockBackgroundOpacity.getAdapter(),
+                        valueRange = 0f..1f,
+                        step = 0.05f,
+                        showAsPercentage = true,
+                    )
+                }
+            }
             PreferenceGroup(heading = stringResource(id = R.string.grid)) {
                 SliderPreference(
                     label = stringResource(id = R.string.dock_icons),

@@ -590,6 +590,16 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         defaultValue = 0.35f,
     )
 
+    val dockBackground = preference(
+        key = booleanPreferencesKey("dock_background"),
+        defaultValue = false,
+    )
+
+    val dockBackgroundOpacity = preference(
+        key = floatPreferencesKey("dock_background_opacity"),
+        defaultValue = 0.35f,
+    )
+
     val smartspaceShowDate = preference(
         key = booleanPreferencesKey("smartspace_show_date"),
         defaultValue = context.resources.getBoolean(R.bool.config_default_smartspace_show_date),

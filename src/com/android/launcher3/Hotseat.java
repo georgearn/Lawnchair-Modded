@@ -33,6 +33,7 @@ import com.patrykmichalik.opto.core.PreferenceExtensionsKt;
 
 import app.lawnchair.hotseat.DisabledHotseat;
 import app.lawnchair.hotseat.HotseatMode;
+import app.lawnchair.hotseat.HotseatPillBackgroundKt;
 import app.lawnchair.hotseat.LawnchairHotseat;
 import app.lawnchair.preferences2.PreferenceManager2;
 
@@ -82,6 +83,7 @@ public class Hotseat extends CellLayout implements Insettable {
 
         mQsb = LayoutInflater.from(context).inflate(layoutId, this, false);
         addView(mQsb);
+        HotseatPillBackgroundKt.bindHotseatPillBackground(this);
     }
 
     /**
