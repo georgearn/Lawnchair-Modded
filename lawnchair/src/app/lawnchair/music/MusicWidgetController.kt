@@ -171,9 +171,9 @@ object MusicWidgetController {
             views.setInt(it, "setColorFilter", textColor)
         }
         views.setViewVisibility(R.id.music_background, if (backgroundEnabled) View.VISIBLE else View.GONE)
-        // Without the pill the text lines up with the rest of the home screen.
+        // Without the pill a small inset lines the text up with the At a Glance clock.
         val density = context.resources.displayMetrics.density
-        val start = if (backgroundEnabled) (24 * density).roundToInt() else 0
+        val start = ((if (backgroundEnabled) 24 else 9) * density).roundToInt()
         val end = if (backgroundEnabled) (14 * density).roundToInt() else 0
         views.setViewPadding(R.id.music_content, start, 0, end, 0)
         if (backgroundEnabled) {
