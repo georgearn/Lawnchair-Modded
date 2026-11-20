@@ -360,7 +360,14 @@ class AllAppsSearchInput(context: Context, attrs: AttributeSet?) :
     }
 
     private fun updateBgAlpha() {
-        val fraction = bgAlphaAnimator.animatedFraction
+        // Before the first fade the animator sits at 0, so fall back to the current visibility.
+        val fraction = if (bgAlphaAnimator.isStarted) {
+            bgAlphaAnimator.animatedFraction
+        } else if (bgVisible) {
+            1f
+        } else {
+            0f
+        }
         bg.alpha = (Utilities.mapRange(fraction, 0f, bgAlpha) * bgOpacity * 255).toInt()
     }
 }
