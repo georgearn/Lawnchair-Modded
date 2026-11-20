@@ -1,70 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/music_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/music_widget_background"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingStart="24dp"
-    android:paddingEnd="14dp">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/music_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/music_widget_background"
+        android:visibility="gone" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="14dp">
 
-        <TextView
-            android:id="@+id/music_title"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/music_widget_text"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/music_artist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/music_widget_text_secondary"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/music_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/music_widget_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/music_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/music_widget_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/music_previous"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/media_button_ripple"
+            android:contentDescription="@string/smartspace_media_previous"
+            android:padding="9dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_media_previous" />
+
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="38dp">
+
+            <ImageView
+                android:id="@+id/music_play_ring"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/music_widget_play_ring" />
+
+            <ImageView
+                android:id="@+id/music_play_pause"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/media_button_ripple"
+                android:contentDescription="@string/smartspace_media_play_pause"
+                android:padding="9dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_media_play" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/music_next"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/media_button_ripple"
+            android:contentDescription="@string/smartspace_media_next"
+            android:padding="9dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_media_next" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/music_previous"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:background="@drawable/media_button_ripple"
-        android:contentDescription="@string/smartspace_media_previous"
-        android:padding="9dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_media_previous"
-        android:tint="@color/music_widget_text" />
-
-    <ImageView
-        android:id="@+id/music_play_pause"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:background="@drawable/music_widget_play_ring"
-        android:contentDescription="@string/smartspace_media_play_pause"
-        android:padding="9dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_media_play"
-        android:tint="@color/music_widget_text" />
-
-    <ImageView
-        android:id="@+id/music_next"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:background="@drawable/media_button_ripple"
-        android:contentDescription="@string/smartspace_media_next"
-        android:padding="9dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_media_next"
-        android:tint="@color/music_widget_text" />
-</LinearLayout>
+</FrameLayout>

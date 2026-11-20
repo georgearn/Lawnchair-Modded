@@ -6,10 +6,23 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
 import android.os.Bundle
+import android.view.ContextThemeWrapper
+import android.view.View
 import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import app.lawnchair.preferences2.PreferenceManager2
 import com.android.launcher3.R
+import com.android.launcher3.util.Themes
+import kotlin.math.roundToInt
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 /**
  * Tracks Poweramp through its sticky broadcasts and keeps every [MusicWidgetProvider]
@@ -25,6 +38,9 @@ object MusicWidgetController {
     private var artist: String? = null
     private var playing = false
     private var stopped = true
+    private var backgroundEnabled = false
+    private var backgroundOpacity = 0.35f
+    private var scope: CoroutineScope? = null
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -39,6 +55,16 @@ object MusicWidgetController {
         appContext = app
         if (registered) return
         registered = true
+        val prefs2 = PreferenceManager2.getInstance(app)
+        scope = MainScope().also {
+            combine(prefs2.musicWidgetBackground.get(), prefs2.musicWidgetBackgroundOpacity.get(), ::Pair)
+                .onEach { (enabled, opacity) ->
+                    backgroundEnabled = enabled
+                    backgroundOpacity = opacity
+                    render()
+                }
+                .launchIn(it)
+        }
         listOf(
             PowerampApi.ACTION_TRACK_CHANGED,
             PowerampApi.ACTION_STATUS_CHANGED,
@@ -54,6 +80,8 @@ object MusicWidgetController {
         val app = appContext ?: return
         if (!registered) return
         registered = false
+        scope?.cancel()
+        scope = null
         try {
             app.unregisterReceiver(receiver)
         } catch (_: IllegalArgumentException) {
@@ -104,6 +132,7 @@ object MusicWidgetController {
         val views = RemoteViews(context.packageName, R.layout.music_widget)
         val installed = PowerampApi.isInstalled(context)
         val hasTrack = installed && !stopped && !title.isNullOrEmpty()
+        applyColors(context, views)
 
         when {
             !installed -> {
@@ -135,6 +164,23 @@ object MusicWidgetController {
             )
         }
         return views
+    }
+
+    // Same colours as the At a Glance card: wallpaper text colour, pill in the opposite shade.
+    private fun applyColors(context: Context, views: RemoteViews) {
+        val themed = ContextThemeWrapper(context, Themes.getActivityThemeRes(context))
+        val textColor = Themes.getAttrColor(themed, R.attr.workspaceTextColor)
+        views.setTextColor(R.id.music_title, textColor)
+        views.setTextColor(R.id.music_artist, textColor)
+        listOf(R.id.music_previous, R.id.music_play_pause, R.id.music_next, R.id.music_play_ring).forEach {
+            views.setInt(it, "setColorFilter", textColor)
+        }
+        views.setViewVisibility(R.id.music_background, if (backgroundEnabled) View.VISIBLE else View.GONE)
+        if (backgroundEnabled) {
+            val base = if (ColorUtils.calculateLuminance(textColor) > 0.5) Color.BLACK else Color.WHITE
+            views.setInt(R.id.music_background, "setColorFilter", base)
+            views.setInt(R.id.music_background, "setImageAlpha", (backgroundOpacity.coerceIn(0f, 1f) * 255).roundToInt())
+        }
     }
 
     private fun commandIntent(context: Context, command: Int): PendingIntent {

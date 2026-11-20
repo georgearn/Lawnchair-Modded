@@ -81,6 +81,11 @@
             android:name="app.lawnchair.smartspace.SmartspacePreferencesShortcut"
             android:theme="@style/Theme.Transparent" />
 
+        <activity
+            android:name="app.lawnchair.music.MusicWidgetPreferencesShortcut"
+            android:exported="false"
+            android:theme="@style/Theme.Transparent" />
+
         <receiver
             android:name="app.lawnchair.gestures.handlers.SleepMethodDeviceAdmin$SleepDeviceAdmin"
             android:description="@string/dt2s_admin_hint"

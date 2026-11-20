@@ -20,6 +20,7 @@ import app.lawnchair.ui.preferences.about.acknowledgements.Acknowledgements
 import app.lawnchair.ui.preferences.components.colorpreference.ColorPreferenceModelList
 import app.lawnchair.ui.preferences.components.colorpreference.ColorSelection
 import app.lawnchair.ui.preferences.destinations.AppDrawerPreferences
+import app.lawnchair.ui.preferences.destinations.MusicWidgetPreferences
 import app.lawnchair.ui.preferences.destinations.AppDrawerRoutes
 import app.lawnchair.ui.preferences.destinations.CustomIconShapePreference
 import app.lawnchair.ui.preferences.destinations.DebugMenuPreferences
@@ -112,6 +113,7 @@ fun InnerNavigation(
 
         composable(route = Routes.SMARTSPACE) { SmartspacePreferences(fromWidget = false) }
         composable(route = Routes.SMARTSPACE_WIDGET) { SmartspacePreferences(fromWidget = true) }
+        composable(route = Routes.MUSIC_WIDGET) { MusicWidgetPreferences() }
 
         navigation(route = Routes.APP_DRAWER, startDestination = "main") {
             composable(route = "main") { AppDrawerPreferences() }
@@ -195,6 +197,7 @@ object Routes {
     const val EXPERIMENTAL_FEATURES = "experimentalFeatures"
     const val SMARTSPACE = "smartspace"
     const val SMARTSPACE_WIDGET = "smartspaceWidget"
+    const val MUSIC_WIDGET = "musicWidget"
     const val CREATE_BACKUP = "createBackup"
     const val RESTORE_BACKUP = "restoreBackup"
     const val PICK_APP_FOR_GESTURE = "pickAppForGesture"

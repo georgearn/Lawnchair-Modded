@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="music_widget_background">#8C000000</color>
     <color name="music_widget_text">#FFFFFFFF</color>
-    <color name="music_widget_text_secondary">#B3FFFFFF</color>
 </resources>
