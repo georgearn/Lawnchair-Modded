@@ -570,16 +570,6 @@ class PreferenceManager2 private constructor(private val context: Context) : Pre
         defaultValue = false,
     )
 
-    val smartspaceNowPlaying = preference(
-        key = booleanPreferencesKey("enable_smartspace_now_playing"),
-        defaultValue = true,
-    )
-
-    val smartspacePoweramp = preference(
-        key = booleanPreferencesKey("enable_smartspace_poweramp"),
-        defaultValue = true,
-    )
-
     val smartspaceBackground = preference(
         key = booleanPreferencesKey("smartspace_background"),
         defaultValue = false,

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="music_widget_background">#E61F1F23</color>
+    <color name="music_widget_text">#FFFFFFFF</color>
+    <color name="music_widget_text_secondary">#B3FFFFFF</color>
+    <color name="music_widget_track">#33FFFFFF</color>
+    <color name="music_widget_accent">#FFFFB84D</color>
+    <color name="music_widget_on_accent">#FF1F1F23</color>
+</resources>

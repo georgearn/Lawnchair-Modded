@@ -19,6 +19,7 @@ package app.lawnchair
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
+import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -37,6 +38,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import app.lawnchair.backup.LawnchairBackup
+import app.lawnchair.music.MusicWidgetController
+import app.lawnchair.music.MusicWidgetProvider
 import app.lawnchair.preferences.PreferenceManager
 import app.lawnchair.ui.ModalBottomSheetContent
 import app.lawnchair.ui.preferences.destinations.openAppInfo
@@ -68,6 +71,9 @@ class LawnchairApp : Application() {
 
     fun onLauncherAppStateCreated() {
         registerActivityLifecycleCallbacks(activityHandler)
+        // The music widget only updates while its Poweramp receiver is registered.
+        val musicWidgets = AppWidgetManager.getInstance(this).getAppWidgetIds(MusicWidgetProvider.componentName(this))
+        if (musicWidgets.isNotEmpty()) MusicWidgetController.start(this)
     }
 
     fun restart(recreateLauncher: Boolean = true) {

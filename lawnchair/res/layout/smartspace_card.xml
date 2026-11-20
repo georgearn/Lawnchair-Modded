@@ -11,43 +11,4 @@
         android:layout_height="match_parent"
         android:layout_weight="3" />
 
-    <LinearLayout
-        android:id="@+id/media_controls"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="14dp"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <ImageButton
-            android:id="@+id/media_previous"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:background="@drawable/media_button_ripple"
-            android:padding="9dp"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/smartspace_media_previous"
-            android:src="@drawable/ic_media_previous" />
-
-        <ImageButton
-            android:id="@+id/media_play_pause"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:background="@drawable/media_button_ripple"
-            android:padding="9dp"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/smartspace_media_play_pause"
-            android:src="@drawable/ic_media_play" />
-
-        <ImageButton
-            android:id="@+id/media_next"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:background="@drawable/media_button_ripple"
-            android:padding="9dp"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/smartspace_media_next"
-            android:src="@drawable/ic_media_next" />
-    </LinearLayout>
 </app.lawnchair.smartspace.BcSmartspaceCard>

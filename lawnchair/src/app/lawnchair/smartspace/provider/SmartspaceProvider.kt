@@ -21,8 +21,6 @@ class SmartspaceProvider private constructor(context: Context) {
         SmartspaceWidgetReader(context),
         BatteryStatusProvider(context),
         BluetoothBatteryProvider(context),
-        PowerampProvider(context),
-        NowPlayingProvider(context),
     )
 
     private val state = dataSources
