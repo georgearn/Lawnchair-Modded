@@ -373,7 +373,7 @@
     <string name="smartspace_media_play_pause">Play or pause</string>
     <string name="smartspace_media_next">Next track</string>
     <string name="music_widget_label">Music player</string>
-    <string name="music_widget_description">Poweramp player with track info and controls</string>
+    <string name="music_widget_description">Current Poweramp track with previous, play/pause and next buttons</string>
     <string name="music_widget_nothing_playing">Nothing playing</string>
     <string name="music_widget_tap_to_open">Tap to open Poweramp</string>
     <string name="music_widget_not_installed">Poweramp not installed</string>

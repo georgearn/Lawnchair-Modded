@@ -7,8 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.os.SystemClock
-import android.view.View
 import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
 import com.android.launcher3.R
@@ -25,18 +23,13 @@ object MusicWidgetController {
 
     private var title: String? = null
     private var artist: String? = null
-    private var album: String? = null
-    private var durationSeconds = 0
-    private var positionSeconds = 0
     private var playing = false
     private var stopped = true
-    private var lastPositionUpdate = 0L
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             handle(intent)
-            val progressOnly = intent.action == PowerampApi.ACTION_TRACK_POS_SYNC
-            render(progressOnly)
+            render()
         }
     }
 
@@ -49,9 +42,8 @@ object MusicWidgetController {
         listOf(
             PowerampApi.ACTION_TRACK_CHANGED,
             PowerampApi.ACTION_STATUS_CHANGED,
-            PowerampApi.ACTION_TRACK_POS_SYNC,
         ).forEach {
-            // The first two are sticky, so the latest of each is replayed on registration.
+            // Both broadcasts are sticky, so the latest of each is replayed on registration.
             ContextCompat.registerReceiver(app, receiver, IntentFilter(it), ContextCompat.RECEIVER_EXPORTED)
                 ?.let(::handle)
         }
@@ -70,23 +62,19 @@ object MusicWidgetController {
 
     fun refresh(context: Context) {
         appContext = context.applicationContext
-        render(progressOnly = false)
+        render()
     }
 
     private fun readTrack(track: Bundle?) {
         track ?: return
         title = track.getString(PowerampApi.KEY_TITLE)
         artist = track.getString(PowerampApi.KEY_ARTIST)
-        album = track.getString(PowerampApi.KEY_ALBUM)
-        durationSeconds = track.getInt(PowerampApi.KEY_DURATION, 0)
     }
 
     private fun handle(intent: Intent) {
         when (intent.action) {
-            PowerampApi.ACTION_TRACK_CHANGED -> {
+            PowerampApi.ACTION_TRACK_CHANGED ->
                 readTrack(intent.getBundleExtra(PowerampApi.EXTRA_TRACK))
-                positionSeconds = 0
-            }
             PowerampApi.ACTION_STATUS_CHANGED -> {
                 val state = intent.getIntExtra(PowerampApi.EXTRA_STATE, PowerampApi.STATE_NO_STATE)
                 stopped = state == PowerampApi.STATE_STOPPED || state == PowerampApi.STATE_NO_STATE
@@ -96,42 +84,20 @@ object MusicWidgetController {
                 intent.getStringExtra(PowerampApi.KEY_TITLE)?.let {
                     title = it
                     artist = intent.getStringExtra(PowerampApi.KEY_ARTIST)
-                    album = intent.getStringExtra(PowerampApi.KEY_ALBUM)
-                    durationSeconds = intent.getIntExtra(PowerampApi.KEY_DURATION, durationSeconds)
                 }
                 readTrack(intent.getBundleExtra(PowerampApi.EXTRA_TRACK))
             }
-            PowerampApi.ACTION_TRACK_POS_SYNC ->
-                positionSeconds = intent.getIntExtra(PowerampApi.EXTRA_POSITION, positionSeconds)
         }
     }
 
     @Synchronized
-    private fun render(progressOnly: Boolean) {
+    private fun render() {
         val context = appContext ?: return
         val manager = AppWidgetManager.getInstance(context)
         val ids = manager.getAppWidgetIds(MusicWidgetProvider.componentName(context))
         if (ids.isEmpty()) return
 
-        if (progressOnly) {
-            // Position ticks arrive about every second, only redraw the bar a little less often.
-            val now = SystemClock.elapsedRealtime()
-            if (now - lastPositionUpdate < PROGRESS_THROTTLE_MS) return
-            lastPositionUpdate = now
-            val views = RemoteViews(context.packageName, R.layout.music_widget)
-            applyProgress(views)
-            manager.partiallyUpdateAppWidget(ids, views)
-            return
-        }
         manager.updateAppWidget(ids, buildViews(context))
-    }
-
-    private fun applyProgress(views: RemoteViews) {
-        val show = !stopped && durationSeconds > 0
-        views.setViewVisibility(R.id.music_progress, if (show) View.VISIBLE else View.INVISIBLE)
-        if (show) {
-            views.setProgressBar(R.id.music_progress, durationSeconds, positionSeconds.coerceIn(0, durationSeconds), false)
-        }
     }
 
     private fun buildViews(context: Context): RemoteViews {
@@ -143,20 +109,16 @@ object MusicWidgetController {
             !installed -> {
                 views.setTextViewText(R.id.music_title, context.getString(R.string.music_widget_not_installed))
                 views.setTextViewText(R.id.music_artist, "")
-                views.setTextViewText(R.id.music_detail, "")
             }
             !hasTrack -> {
                 views.setTextViewText(R.id.music_title, context.getString(R.string.music_widget_nothing_playing))
                 views.setTextViewText(R.id.music_artist, context.getString(R.string.music_widget_tap_to_open))
-                views.setTextViewText(R.id.music_detail, "")
             }
             else -> {
                 views.setTextViewText(R.id.music_title, title)
                 views.setTextViewText(R.id.music_artist, artist.orEmpty())
-                views.setTextViewText(R.id.music_detail, album.orEmpty())
             }
         }
-        applyProgress(views)
 
         views.setImageViewResource(
             R.id.music_play_pause,
@@ -186,6 +148,4 @@ object MusicWidgetController {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
     }
-
-    private const val PROGRESS_THROTTLE_MS = 2000L
 }
