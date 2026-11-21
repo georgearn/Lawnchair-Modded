@@ -11,6 +11,8 @@ import android.view.View
 import androidx.core.graphics.ColorUtils
 import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.util.repeatOnAttached
+import com.android.launcher3.BubbleTextView
+import com.android.launcher3.CellLayout
 import com.android.launcher3.R
 import com.android.launcher3.util.Themes
 import kotlinx.coroutines.flow.combine
@@ -27,7 +29,7 @@ private class HotseatPillDrawable(private val view: View) : Drawable() {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val rect = RectF()
     private val horizontalInset = 12 * view.resources.displayMetrics.density
-    private val verticalInset = 8 * view.resources.displayMetrics.density
+    private val verticalPadding = 10 * view.resources.displayMetrics.density
 
     fun setColor(color: Int) {
         paint.color = color
@@ -37,14 +39,28 @@ private class HotseatPillDrawable(private val view: View) : Drawable() {
     override fun draw(canvas: Canvas) {
         rect.set(
             maxOf(view.paddingLeft - horizontalInset, 0f),
-            maxOf(view.paddingTop - verticalInset, 0f),
+            view.paddingTop.toFloat(),
             minOf(view.width - view.paddingRight + horizontalInset, view.width.toFloat()),
-            minOf(view.height - view.paddingBottom + verticalInset, view.height.toFloat()),
+            (view.height - view.paddingBottom).toFloat(),
         )
+        fitToIcons()
         if (rect.isEmpty) return
         // Radius larger than half the height is clamped, giving fully rounded ends.
         val radius = minOf(rect.height() / 2f, 32 * view.resources.displayMetrics.density)
         canvas.drawRoundRect(rect, radius, radius, paint)
+    }
+
+    // Hug the icon row instead of the whole padded hotseat area.
+    private fun fitToIcons() {
+        val container = (view as? CellLayout)?.shortcutsAndWidgets ?: return
+        val icon = (0 until container.childCount)
+            .map { container.getChildAt(it) }
+            .filterIsInstance<BubbleTextView>()
+            .firstOrNull() ?: return
+        val centerY = container.top + icon.top + icon.height / 2f
+        val halfHeight = icon.iconSize / 2f + verticalPadding
+        rect.top = maxOf(centerY - halfHeight, 0f)
+        rect.bottom = minOf(centerY + halfHeight, view.height.toFloat())
     }
 
     override fun setAlpha(alpha: Int) = Unit
