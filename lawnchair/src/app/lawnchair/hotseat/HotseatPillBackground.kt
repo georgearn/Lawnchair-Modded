@@ -29,7 +29,7 @@ private class HotseatPillDrawable(private val view: View) : Drawable() {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val rect = RectF()
     private val horizontalInset = 12 * view.resources.displayMetrics.density
-    private val verticalPadding = 10 * view.resources.displayMetrics.density
+    private val verticalPadding = 14 * view.resources.displayMetrics.density
 
     fun setColor(color: Int) {
         paint.color = color
